@@ -1,0 +1,455 @@
+<style>
+    .csum {
+        list-style: none;
+        margin: 20px auto;
+        width: 200px;
+        text-align: center;
+        padding: 10px;
+        background: #f5f5f5;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    .csum:hover {
+        background: #d6d6d6;
+    }
+</style>
+<main id="main">
+    <div class="document">
+        <h2 class="t_tit">Parallax Scroll 효과</h2>
+        <p class="t_box" style="text-align: center;">
+            <i>오늘의 목표</i><br>
+            👉🏻 스크롤을 내리면 차례대로 내용이 나타나도록 설정하기<br>
+            👉🏻 나타날때 효과 설정하기 (rotate, skew, cubic-bezier, ...)
+        </p>
+
+        <hr>
+
+        <h3 class="t_tit2">1. 사이트 구조 살펴보기</h3>
+        <div class="t_iframe" style="min-height : 1000px; padding-top: 0;">
+            <iframe src="https://kkb75281.github.io/coding2/javascript/effect/parallaxEffect04.html" frameborder="0"></iframe>
+        </div>
+        <div class="t_result">
+            <details>
+                <summary class="csum">CSS 살펴보기</summary>
+                <div class="t_code">
+<pre><code class=""language-js>&lt;style&gt;
+    /* parallax__nav */
+    #parallax__nav {
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        z-index: 2000;
+        background-color: rgba(0,0,0,0.4);
+        padding: 20px 30px;
+        border-radius: 50px;
+        transition: top .4s ease;
+    }
+    #parallax__nav li {
+        display: inline;
+        margin: 0 5px;
+    }
+    #parallax__nav li a {
+        display: inline-block;
+        height: 30px;
+        padding: 5px 20px;
+        text-align: center;
+        line-height: 30px;
+    }
+    #parallax__nav li.active a {
+        background: #fff;
+        color: #000;
+        border-radius: 20px;
+        box-sizing: content-box;
+    }
+
+    /* parallax__cont */
+    #parallax__cont {
+        max-width: 1600px;
+        width: 98%;
+        margin: 0 auto;
+        /* background-color: rgba(255,255,255,0.1); */
+    }
+    .content__item {
+        width: 1000px;
+        max-width: 70vw;
+        margin: 30vw auto;
+        /* background-color: rgba(255,255,255,0.3); */
+        text-align: left;
+        margin-right: 0;
+        position: relative;
+        padding-top: 7vw;
+    }
+    /* even(짝수), 2n, 2n+1, 2n*8 등 입력 가능 */
+    .content__item:nth-child(even){
+        margin-left: 0;
+        text-align: right;
+    }
+    .content__item__num {
+        font-size: 35vw;
+        font-family: 'Lato';
+        font-weight: 100;
+        position: absolute;
+        left: -5vw;
+        top: -16vw;
+        opacity: 0.07;
+        z-index: -2;
+    }
+    .content__item:nth-child(even) .content__item__num {
+        /* left값 초기화 후 right 값 설정 */
+        left: auto;
+        right: -5vw;
+    }
+    .content__item__title {
+        font-weight: 400;
+        text-transform: capitalize;
+    }
+    .content__item__imgWrap {
+        width: 100%;
+        padding-bottom: 56.25%;
+        background: #000;
+        position: relative;
+        overflow: hidden;
+        z-index: -1;
+    }
+    .content__item__img {
+        position: absolute;
+        width: 110%;
+        height: 110%;
+        background: url(../assets/img/effect_bg01-min.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        left: -5%;
+        top: -5%;
+        filter: saturate(0%);
+        transition: all 1s;
+    }
+    .content__item:nth-child(1) .content__item__img {
+        background-image: url(../assets/img/effect_bg01-min.jpg);
+    }
+    .content__item:nth-child(2) .content__item__img {
+        background-image: url(../assets/img/effect_bg02-min.jpg);
+    }
+    .content__item:nth-child(3) .content__item__img {
+        background-image: url(../assets/img/effect_bg03-min.jpg);
+    }
+    .content__item:nth-child(4) .content__item__img {
+        background-image: url(../assets/img/effect_bg04-min.jpg);
+    }
+    .content__item:nth-child(5) .content__item__img {
+        background-image: url(../assets/img/effect_bg05-min.jpg);
+    }
+    .content__item:nth-child(6) .content__item__img {
+        background-image: url(../assets/img/effect_bg06-min.jpg);
+    }
+    .content__item:nth-child(7) .content__item__img {
+        background-image: url(../assets/img/effect_bg07-min.jpg);
+    }
+    .content__item:nth-child(8) .content__item__img {
+        background-image: url(../assets/img/effect_bg08-min.jpg);
+    }
+    .content__item:nth-child(9) .content__item__img {
+        background-image: url(../assets/img/effect_bg09-min.jpg);
+    }
+    .content__item__desc {
+        font-size: 4vw;
+        line-height: 1.4;
+        margin-top: -5vw;
+        margin-left: -4vw;
+        word-break: keep-all;
+    }
+    .content__item:nth-child(even) .content__item__desc {
+        margin-left: auto;
+        margin-right: -4vw;
+    }
+
+    @media (max-width: 800px) {
+        #parallax__cont {
+            margin-top: 70vw;
+        }
+        #parallax__nav {
+            padding: 10px;
+            right: auto;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 5px;
+            background-color: rgba(0,0,0,0.8);
+        }
+        #parallax__nav li {
+            display: block;
+            margin: 5px;
+        }
+        #parallax__nav li a {
+            font-size: 14px;
+            padding: 5px;
+            border-radius: 5px;
+            height: auto;
+            line-height: 1;
+        }
+        #parallax__nav li.active a {
+            border-radius: 5px;
+        }
+    }
+
+    /* 한번에 나타나기 */
+    /* #contents > section { 
+        opacity: 0;
+        transition:  all 1s;
+    }
+    #contents > section.show {
+        opacity: 1;
+    } */
+
+    /* 개별적으로 나타나기 */
+    #contents > section .content__item__num {
+        opacity: 0;
+        transform: translateY(200px);
+        transition: all 1s 0.1s cubic-bezier(0, 0.5, 0.23, 1.02);
+    }
+    #contents > section .content__item__title {
+        opacity: 0;
+        transform: translateX(-100px);
+        transition: all 1s 0.3s cubic-bezier(0.24, 0.43, 0.3, 0.76);
+    }
+    #contents > section .content__item__imgWrap {
+        opacity: 0;
+        transform: translateY(200px) rotate(30deg) skew(20deg);
+        transition: all 1s 0.6s cubic-bezier(0, 0.5, 0.23, 1.02);
+    }
+    #contents > section .content__item__desc {
+        opacity: 0;
+        transform: translateX(-200px);
+        transition: all 1s 0.9s cubic-bezier(0, 0.5, 0.23, 1.02);
+    }
+
+    #contents > section.show .content__item__num {
+        opacity: 0.07;
+        transform: translateY(0);
+    }
+    #contents > section.show .content__item__title {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    #contents > section.show .content__item__imgWrap {
+        opacity: 1;
+        transform: translateY(0) rotate(0) skew(0);
+    }
+    #contents > section.show .content__item__desc {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    #contents > section:nth-child(even) .content__item__title {
+        transform: translateX(100px);
+    }
+    #contents > section:nth-child(even).show .content__item__title {
+        transform: translateX(0);
+    }
+    #contents > section:nth-child(even) .content__item__desc {
+        transform: translateX(-200px);
+    }
+    #contents > section:nth-child(even).show .content__item__desc {
+        transform: translateX(0);
+    }
+&lt;/style&gt;
+</code></pre></div>
+        </details>
+
+        <details>
+            <summary class="csum">HTML 살펴보기</summary>
+            <div class="t_code">
+<pre><code class=""language-js>&lt;main id="parallax__cont"&gt;
+    &lt;div id="contents"&gt;
+        &lt;section id="section1" class="content__item"&gt;
+            &lt;span class="content__item__num"&gt;01&lt;/span&gt;
+            &lt;h2 class="content__item__title"&gt;section1&lt;/h2&gt;
+            &lt;figure class="content__item__imgWrap"&gt;
+                &lt;div class="content__item__img"&gt;&lt;/div&gt;
+            &lt;/figure&gt;
+            &lt;p class="content__item__desc"&gt;우선 무엇이 되고자 하는가를 자신에게 말하라 그리고 해야 할일을 하라.&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;!-- //section1 --&gt;
+
+        &lt;section id="section2" class="content__item"&gt;
+            &lt;span class="content__item__num"&gt;02&lt;/span&gt;
+            &lt;h2 class="content__item__title"&gt;section2&lt;/h2&gt;
+            &lt;figure class="content__item__imgWrap"&gt;
+                &lt;div class="content__item__img"&gt;&lt;/div&gt;
+            &lt;/figure&gt;
+            &lt;p class="content__item__desc"&gt;이미 끝나버린 일을 후회하기 보다는 하고 싶었던 일들을 하지 못한 것을 후회하라.&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;!-- //section2 --&gt;
+
+        &lt;section id="section3" class="content__item"&gt;
+            &lt;span class="content__item__num"&gt;03&lt;/span&gt;
+            &lt;h2 class="content__item__title"&gt;section3&lt;/h2&gt;
+            &lt;figure class="content__item__imgWrap"&gt;
+                &lt;div class="content__item__img"&gt;&lt;/div&gt;
+            &lt;/figure&gt;
+            &lt;p class="content__item__desc"&gt;문제는 목적지에 얼마나 빨리 가느내가 아니라 그 목적지가 어디냐는 것이다.&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;!-- //section3 --&gt;
+
+        &lt;section id="section4" class="content__item"&gt;
+            &lt;span class="content__item__num"&gt;04&lt;/span&gt;
+            &lt;h2 class="content__item__title"&gt;section4&lt;/h2&gt;
+            &lt;figure class="content__item__imgWrap"&gt;
+                &lt;div class="content__item__img"&gt;&lt;/div&gt;
+            &lt;/figure&gt;
+            &lt;p class="content__item__desc"&gt;도저히 손댈 수가 없는 곤란에 부딪혔다면 과감하게 그 속으로 뛰어들라.&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;!-- //section4 --&gt;
+
+        &lt;section id="section5" class="content__item"&gt;
+            &lt;span class="content__item__num"&gt;05&lt;/span&gt;
+            &lt;h2 class="content__item__title"&gt;section5&lt;/h2&gt;
+            &lt;figure class="content__item__imgWrap"&gt;
+                &lt;div class="content__item__img"&gt;&lt;/div&gt;
+            &lt;/figure&gt;
+            &lt;p class="content__item__desc"&gt;당신이 할수 있다고 믿든 할수 없다고 믿든 믿는 대로 될것이다.&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;!-- //section5 --&gt;
+
+        &lt;section id="section6" class="content__item"&gt;
+            &lt;span class="content__item__num"&gt;06&lt;/span&gt;
+            &lt;h2 class="content__item__title"&gt;section6&lt;/h2&gt;
+            &lt;figure class="content__item__imgWrap"&gt;
+                &lt;div class="content__item__img"&gt;&lt;/div&gt;
+            &lt;/figure&gt;
+            &lt;p class="content__item__desc"&gt;마음만을 가지고 있어서는 안된다. 반드시 실천하여야 한다.&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;!-- //section6 --&gt;
+
+        &lt;section id="section7" class="content__item"&gt;
+            &lt;span class="content__item__num"&gt;07&lt;/span&gt;
+            &lt;h2 class="content__item__title"&gt;section7&lt;/h2&gt;
+            &lt;figure class="content__item__imgWrap"&gt;
+                &lt;div class="content__item__img"&gt;&lt;/div&gt;
+            &lt;/figure&gt;
+            &lt;p class="content__item__desc"&gt;꿈을 계속 간직하고 있으면 반드시 실현할 때가 온다.&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;!-- //section7 --&gt;
+
+        &lt;section id="section8" class="content__item"&gt;
+            &lt;span class="content__item__num"&gt;08&lt;/span&gt;
+            &lt;h2 class="content__item__title"&gt;section8&lt;/h2&gt;
+            &lt;figure class="content__item__imgWrap"&gt;
+                &lt;div class="content__item__img"&gt;&lt;/div&gt;
+            &lt;/figure&gt;
+            &lt;p class="content__item__desc"&gt;오랫동안 꿈을 그리는 사람은 마침내 그 꿈을 닮아 간다.&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;!-- //section8 --&gt;
+
+        &lt;section id="section9" class="content__item"&gt;
+            &lt;span class="content__item__num"&gt;09&lt;/span&gt;
+            &lt;h2 class="content__item__title"&gt;section9&lt;/h2&gt;
+            &lt;figure class="content__item__imgWrap"&gt;
+                &lt;div class="content__item__img"&gt;&lt;/div&gt;
+            &lt;/figure&gt;
+            &lt;p class="content__item__desc"&gt;먼저 핀 꽃은 먼저진다. 남보다 먼저 공을 세우려고 조급히 서둘것이 아니다.&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;!-- //section9 --&gt;
+    &lt;/div&gt;
+&lt;/main&gt;
+</code></pre></div>
+        </details>
+        </div>
+
+        <h3 class="t_tit2">2. transform 효과 살펴보기</h3>
+        <h4 class="t_tit3">1) skew();</h4>
+        <table class="t_table">
+            <thead>
+                <tr>
+                    <th>속성값</th>
+                    <th>의미</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>transform:skew()</td>
+                    <td>
+                        skew(X축의 기울기 각도, Y축의 기울기 각도)<br>
+                        X축과 Y축에 따른 경사 변형을 지정하며 하나의 값만 쓴다면 Y축은 경사지지 않습니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>transform:skewX()</td>
+                    <td>
+                        X축에 따른 경사 변형을 지정합니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>transform:skewY()</td>
+                    <td>
+                        Y축에 따른 경사 변형을 지정합니다.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="t_tit3">2) cubic-bezier();</h4>
+        <p class="t_box">
+            베지어 곡선(cubic-bezier);<br>
+            보통 transform 으로 효과를 줄때 흔히 쓰이는 ease, linear, ease-in, ...등의 효과가 이에 해당하는데 더 구체적인 값을 설정해준다면 더욱 있어보이게 효과를 줄 수 있습니다.<br>
+            값을 어떻게 줄지 모르겠다면 검사하기를 통해서 미리 설정해보고 그 값을 대입하면 더 쉽게 적용할 수 있습니다.
+        </p>
+
+        <h3 class="t_tit2">3. script 살펴보기</h3>
+        <p class="t_box">
+            window.addEventListener 을 통해 스크롤 효과를 주면 리소스를 계속 만들기 때문에 사이트가 느려지는 단점이 있습니다.이를 방지하기 위해 <i>재귀함수</i>를 활용할 수 있습니다.<br> 
+            하지만 연속해서 루프가 생겨 무한궤도(Maximum callstack)에 빠져 화면이 멈추는 현상이 나타나게 됩니다.<br>
+            그래서 아래와 같이 scroll();을 실행하지 않고 requestAnimationFrame() 메서드를 통해 실행시켜 주었습니다.
+        </p>
+        <div class="t_code">
+<pre><code class=""language-js>&lt;script&gt;
+    // 리소스 계속 만들어서 사이트 느려질 수 있음
+    // window.addEventListener("scroll", scrollProgress);
+
+
+    // 재귀함수(자기 자신을 또 실행시켜 줌)
+    function scroll(){
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || window.screenY;
+
+        document.querySelectorAll(".content__item").forEach(item => {
+            // 올라오는 속도 조절을 위해 %2
+            if(scrollTop > item.offsetTop - window.innerHeight/2){
+                item.classList.add("show");
+            }
+        });
+
+        // 1분에 60번 실행
+        // 브라우저에 최적화 부드럽게, 메모리 훨씬 더 적게 차지
+        requestAnimationFrame(scroll);
+    }
+    scroll();
+&lt;/script&gt;
+</code></pre></div>
+        <p class="t_box">
+            📍<b>requestAnimationFrame(반복할 함수);</b><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;함수를 1분에 60번 실행시켜주는 메서드로 브라우저에 최적화되어 메모리도 훨씬 적게 차지되고 부드럽게 실행됩니다.
+        </p>
+
+        <hr>
+
+        <h3 class="t_tit2">+ 연관된 메서드 살펴보기</h3>
+        <p class="t_box">
+            📍<b>cancelAnimationFrame();</b><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;requestAnimationFrame()를 취소하는 방법입니다. 아래와 같이 사용합니다.
+        </p>
+        <div class="t_code">
+<pre><code class=""language-js>cbReq = requestAnimationFrame(callback);
+cancelAnimationFrame(cbReq);
+</code></pre></div>
+
+        <div class="t_link">
+            <a class="center" href="https://github.com/kkb75281/coding2/blob/main/javascript/effect/parallaxEffect04.html" target="_blank">원본 소스 보기</a>
+        </div>
+        <div class="t_link">
+            <a class="center" href="https://kkb75281.github.io/coding2/javascript/effect/parallaxEffect01.html" target="_blank">실제 사이트 보기</a>
+        </div>
+
+        
+        
+    </div>
+</main>

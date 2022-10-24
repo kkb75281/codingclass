@@ -1,0 +1,128 @@
+<main id="main">
+    <div class="document">
+        <h2 class="t_tit">사이트 제작부터 반응형 적용까지 해보자:9</h2>
+        <p class="t_box">
+            지금까지 배운 헤더, 배너, 슬라이드, ... 등의 타입들을 조합하여 반응형 사이트를 만들어봅시다.
+        </p>
+
+        <h3 class="t_tit2">✔︎ 결과 확인하기</h3>
+        <div class="t_iframe">
+            <iframe src="https://kkb75281.github.io/coding2/site/site1/index" frameborder="0" width="100%" height="auto"></iframe>
+        </div>
+        <div class="t_link">
+            <a class="center" href="https://github.com/kkb75281/coding2/blob/main/site/site1/index.html" target="_blank">전체 소스 보기</a>
+        </div>
+        <div class="t_link">
+            <a class="center" href="https://kkb75281.github.io/coding2/site/site1/index" target="_blank">실제 사이트 보기</a>
+        </div>
+
+        <hr>
+
+        <h3 class="t_tit2" style="font-weight: bold;">#header</h3>
+        <p class="t_box">
+            💡 햄버거 메뉴를 사용해주었습니다.<br>
+            <span style="color: #c5c5c5; margin-left: 20px;">화면 크기 1300px부터는 헤더 메뉴를 보이지 않게 처리하고 햄버거 메뉴로 대신하게 만들었습니다.</span><br>
+            <span style="color: #c5c5c5; margin-left: 20px;">* 햄버거 메뉴 : 주로 앱 상단 모퉁이에 위치하며, 메뉴를 토글하거나 네비게이션 바의 역할을 합니다.</span>
+        </p>
+        <p class="t_box">
+            ⚠ 햄버거 메뉴를 열었을 때 스크롤이 생기는 현상을 막아주었습니다.<br>
+            <span style="color: #c5c5c5; margin-left: 20px;">script로 햄버거 메뉴를 클릭했을 때, body에 class="fixed"를 추가시켜 해결해주었습니다.</span><br>
+            ⚠ 햄버거 메뉴를 열어놓은 상태에서 화면크기를 최대로 키웠다가 다시 줄였을 때 메뉴가 다시 닫히는게 아닌 열려 있는 현상을 막아주었습니다.<br>
+            <span style="color: #c5c5c5; margin-left: 20px;">script로 화면 크기가 설정해둔 크기 이상이 되었을 때, fixed와 active를 제거해 초기화하여 해결해주었습니다.</span>
+        </p>
+        <div class="t_link">
+            <a class="center" href="https://github.com/kkb75281/coding2/blob/main/site/site1/assets/css/header.css" target="_blank">➪ header.css</a>
+        </div>
+
+        <h3 class="t_tit2" style="font-weight: bold;">#slider</h3>
+        <p class="t_box">
+            💡 제목에 blind 효과를 사용하여 보이지 않도록 해주었습니다.<br>
+            <span style="color: #c5c5c5; margin-left: 20px;">웹 접근성을 고려하여 화면상 보이지는 않지만 스크린 리더기에는 읽히도록 설정해줍니다.</span><br>
+            💡 Swiper을 사용하여 슬라이드 효과를 적용해주었습니다.<br>
+            <span style="color: #c5c5c5; margin-left: 20px;">홈페이지에서 코드를 가져와 기능을 구현하고 만드려는 사이트에 맞게 css에서 디자인을 만들어줍니다.</span><br>
+            <span style="color: #c5c5c5; margin-left: 20px;">* Swiper : 슬라이드, 스와이프 기능을 사용할 때 비교적 손쉽게 구현할 수 있는 라이브러리</span><br>
+            💡 슬라이드 내 화살표, 점, 플레이 표시 등은 이미지 스프라이트 기법을 사용해 만들어주었습니다.
+        </p>
+        <div class="t_link">
+            <a class="center" href="https://github.com/kkb75281/coding2/blob/main/site/site1/assets/css/slider.css" target="_blank">➪ slider.css</a>
+        </div>
+
+        <h3 class="t_tit2" style="font-weight: bold;">#image</h3>
+        <p class="t_box">
+            💡 이미지에 마우스 오버 효과를 주었습니다.<br>
+            <span style="color: #c5c5c5; margin-left: 20px;">이미지에 마우스를 올리면 더보기가 뜨며, 동시에 이미지가 눌리는 것처럼 크기가 살짝 작아지도록 만들어주었습니다.</span>
+        </p>
+        <div class="t_link">
+            <a class="center" href="https://github.com/kkb75281/coding2/blob/main/site/site1/assets/css/image.css" target="_blank">➪ image.css</a>
+        </div>
+
+        <h3 class="t_tit2" style="font-weight: bold;">#imgText</h3>
+        <p class="t_box">
+            💡 제목에 blind 효과를 사용하여 보이지 않도록 해주었습니다.<br>
+            <span style="color: #c5c5c5; margin-left: 20px;">웹 접근성을 고려하여 화면상 보이지는 않지만 스크린 리더기에는 읽히도록 설정해주었습니다.</span><br>
+            💡 이미지에 마우스 오버 효과를 주었습니다.<br>
+            <span style="color: #c5c5c5; margin-left: 20px;">이미지에 마우스를 올리면 사진에 맞게 제목이 길어지게 만들었습니다.</span>
+        </p>
+        <div class="t_link">
+            <a class="center" href="https://github.com/kkb75281/coding2/blob/main/site/site1/assets/css/imgText.css" target="_blank">➪ imgText.css</a>
+        </div>
+
+        <h3 class="t_tit2" style="font-weight: bold;">#card</h3>
+        <p class="t_box">
+            💡 img는 figure 태그로 감싸주었습니다.<br>
+            💡 카드에 마우스 오버 효과를 주었습니다.<br>
+            <span style="color: #c5c5c5; margin-left: 20px;">카드에 마우스를 올리면 대표 사진이 약간 확대되는 동시에 카드에 그림자가 생기도록 해주었습니다.</span>
+        </p>
+        <div class="t_link">
+            <a class="center" href="https://github.com/kkb75281/coding2/blob/main/site/site1/assets/css/card.css" target="_blank">➪ card.css</a>
+        </div>
+
+        <h3 class="t_tit2" style="font-weight: bold;">#banner</h3>
+        <p class="t_box">
+            💡 글씨에 마우스 오버 효과를 주었습니다.
+        </p>
+        <div class="t_link">
+            <a class="center" href="https://github.com/kkb75281/coding2/blob/main/site/site1/assets/css/banner.css" target="_blank">➪ banner.css</a>
+        </div>
+
+        <h3 class="t_tit2" style="font-weight: bold;">#text</h3>
+        <p class="t_box">
+            💡 글씨에 마우스 오버 효과를 주었습니다.
+        </p>
+        <div class="t_link">
+            <a class="center" href="https://github.com/kkb75281/coding2/blob/main/site/site1/assets/css/text.css" target="_blank">➪ text.css</a>
+        </div>
+
+        <h3 class="t_tit2" style="font-weight: bold;">#footer</h3>
+        <p class="t_box">
+            💡 모바일 버전에서는 보이지 않도록 설정해주었습니다.
+        </p>
+        <div class="t_link">
+            <a class="center" href="https://github.com/kkb75281/coding2/blob/main/site/site1/assets/css/footer.css" target="_blank">➪ footer.css</a>
+        </div>
+
+        <hr>
+
+        <h3 class="t_tit2" style="font-weight: bold;">reset.css</h3>
+        <p class="t_box">
+            ⚠ 가로모드에서 글씨 크기가 커지는 것을 막아주었습니다.<br>
+            <span style="color: #c5c5c5; margin-left: 20px;">html에 -ms-text-size-adjust: 100%;,
+                -webkit-text-size-adjust: 100%;를 추가시켜줍니다.</span>
+        </p>
+        <div class="t_link">
+            <a class="center" href="https://github.com/kkb75281/coding2/blob/main/site/site1/assets/css/reset.css" target="_blank">➪ reset.css</a>
+        </div>
+
+        <h3 class="t_tit2" style="font-weight: bold;">common.css</h3>
+        <p class="t_box">
+            ⚠ window 상에서 햄버거 메뉴 키고 끌때 화면 튕김 현상을 막아주었습니다.<br>
+            <span style="color: #c5c5c5; margin-left: 20px;">body에 overflow: overlay; 를 추가시켜줍니다.</span><br>
+            ⚠ 햄버거 메뉴를 열었을 때 스크롤이 생기는 현상을 막아주었습니다.<br>
+            <span style="color: #c5c5c5; margin-left: 20px;">body에 overflow: hidden; 으로 설정하여 화면을 고정시켜줍니다.</span><br>
+        </p>
+        <div class="t_link">
+            <a class="center" href="https://github.com/kkb75281/coding2/blob/main/site/site1/assets/css/common.css" target="_blank">➪ common.css</a>
+        </div>
+
+    </div>
+</main>

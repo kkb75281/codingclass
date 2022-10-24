@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카드 유형02</title>
+    <style>
+        /* fonts */
+        @import url('https://webfontworld.github.io/gmarket/GmarketSans.css');
+
+        .gmark {
+            font-family: "GmarketSans";
+            font-weight: 500;
+        }
+
+        /* reset */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: normal;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+        img {
+            width: 100%;
+        }
+
+        /* common */
+        .container {
+            width: 1160px;
+            padding: 0 20px;
+            margin: 0 auto;
+            min-width: 1160px;
+        }
+        .section {
+            padding: 120px 0;
+        }
+        .section > h2 {     /* +는 형제 바로 밑에 있는 자식은 > */
+            font-size: 50px;
+            line-height: 1;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .section > p {
+            font-size: 22px;
+            font-weight: 3oo;
+            color: #666;
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .gray {
+            background-color: #f5f5f5;
+        }
+        
+        /* ir 효과(image replace 효과, 이미지 대체효과 == alt, 스크린 리더기에는 읽히고 우리 눈에는 안보이게) */
+        .ir {
+            display: block;
+            overflow: hidden;
+            font-size: 0;
+            line-height: 0;
+            text-indent: -9999px;       /* 들여쓰기 */
+        }
+
+        /* cardType02 */
+        .card__inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .card__inner .card {
+            width: 24%;
+            position: relative;
+        }
+        .card__inner .card:first-child {        /* 익스플로어 고려해서 nth 말고 퍼스트찰드로 */
+            margin-bottom: 50px;
+        }
+        .card__inner .card img {
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .card__inner .card .tit {
+            font-size: 28px;
+            margin-bottom: 10px;
+            /* 한줄효과 */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding-right: 20px;
+        }
+        .card__inner .card .desc {
+            font-size: 18px;
+            font-weight: 300;
+            color: #666;
+            line-height: 1.4;
+            /* 세줄효과 */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; 
+            -webkit-box-orient: vertical;
+        }
+        .card__inner .card .more {
+            width: 28px;
+            height: 28px;
+            background-image: url(img/arrow.svg);
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 230px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <section id="cardType02" class="card__wrap gmark section gray">
+        <h2>계절별 추천 여행지</h2>
+        <p>
+            봄, 여름, 가을, 겨울 4계절별 각각에 맞는 여러 여행지와 추천 식당, 카페 등을<br>
+            모아서 정리해보았습니다. 잘 참고하셔서 좋은 여행 되시길 바래요!
+        </p>
+        <div class="card__inner container">
+            <article class="card">
+                <img src="img/card_bg02_01.jpg" alt="봄 Spring">
+                <h3 class="tit">봄 Spring</h3>
+                <p class="desc">봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.</p>
+                <a href="#" class="more"><span class="ir">더보기</span></a>
+            </article>
+            <article class="card">
+                <img src="img/card_bg02_02.jpg" alt="여름 Summer">
+                <h3 class="tit">여름 Summer</h3>
+                <p class="desc">봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.</p>
+                <a href="#" class="more"><span class="ir">더보기</span></a>
+            </article>
+            <article class="card">
+                <img src="img/card_bg02_03.jpg" alt="가을 Fall">
+                <h3 class="tit">가을 Fall</h3>
+                <p class="desc">봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.</p>
+                <a href="#" class="more"><span class="ir">더보기</span></a>
+            </article>
+            <article class="card">
+                <img src="img/card_bg02_04.jpg" alt="겨울 Winter">
+                <h3 class="tit">겨울 Winter</h3>
+                <p class="desc">봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.</p>
+                <a href="#" class="more"><span class="ir">더보기</span></a>
+            </article>
+            <article class="card">
+                <img src="img/card_bg02_05.jpg" alt="봄 Spring">
+                <h3 class="tit">봄 Spring</h3>
+                <p class="desc">봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.</p>
+                <a href="#" class="more"><span class="ir">더보기</span></a>
+            </article>
+            <article class="card">
+                <img src="img/card_bg02_06.jpg" alt="여름 Summer">
+                <h3 class="tit">여름 Sumemr</h3>
+                <p class="desc">봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.</p>
+                <a href="#" class="more"><span class="ir">더보기</span></a>
+            </article>
+            <article class="card">
+                <img src="img/card_bg02_07.jpg" alt="가을 Fall">
+                <h3 class="tit">가을 Fall</h3>
+                <p class="desc">봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.</p>
+                <a href="#" class="more"><span class="ir">더보기</span></a>
+            </article>
+            <article class="card">
+                <img src="img/card_bg02_08.jpg" alt="겨울 Winter">
+                <h3 class="tit">겨울 Winter</h3>
+                <p class="desc">봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.</p>
+                <a href="#" class="more"><span class="ir">더보기</span></a>
+            </article>
+        </div>
+    </section>
+</body>
+</html>
