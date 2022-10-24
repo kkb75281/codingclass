@@ -51,7 +51,6 @@ https://kkb75281.github.io/codingclass/javascript/effect/mouseEffect03.html
 https://kkb75281.github.io/codingclass/javascript/effect/mouseEffect04.html   
 https://kkb75281.github.io/codingclass/javascript/effect/mouseEffect05.html   
 https://kkb75281.github.io/codingclass/javascript/effect/mouseEffect06.html   
-https://kkb75281.github.io/codingclass/javascript/effect/mouseEffect07.html   
 
 ## 슬라이드 이펙트
 https://kkb75281.github.io/codingclass/javascript/effect/sliderEffect01.html   
