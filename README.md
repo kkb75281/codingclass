@@ -43,7 +43,6 @@ https://kkb75281.github.io/codingclass/javascript/effect/quizEffect03.html
 https://kkb75281.github.io/codingclass/javascript/effect/quizEffect04.html   
 https://kkb75281.github.io/codingclass/javascript/effect/quizEffect05.html   
 https://kkb75281.github.io/codingclass/javascript/effect/quizEffect06.html   
-https://kkb75281.github.io/codingclass/javascript/effect/quizEffect07.html   
 
 ## 마우스 이펙트
 https://kkb75281.github.io/codingclass/javascript/effect/mouseEffect01.html   
