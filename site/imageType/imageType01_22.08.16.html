@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 유형01</title>
+    <style>
+        /* fonts */
+        @import url('https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css');
+
+        .nexon {
+            font-family: "NexonLv1Gothic";
+            font-weight: 400;
+        }
+
+        /* reset */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: normal;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+        img {
+            width: 100%;
+        }
+
+        /* common */
+        .container {
+            width: 1160px;
+            padding: 0 20px;
+            margin: 0 auto;
+            min-width: 1160px;
+        }
+        .section {
+            padding: 120px 0;
+        }
+        .section > h2 {     /* +는 형제 바로 밑에 있는 자식은 > */
+            font-size: 50px;
+            line-height: 1;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .section > p {
+            font-size: 22px;
+            font-weight: 3oo;
+            color: #666;
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        /* imageType01 */
+        .card__inner {
+            display: flex;
+        }
+        .card1, .card2 {
+            width: 570px;
+            height: 370px;
+            padding-left: 30px;
+        }
+        .card1 {
+            background-image: url(../cardType/img/11.jpg);
+            background-size: cover;
+            margin-right: 20px;
+        }
+        .card2 {
+            background-image: url(../cardType/img/22.jpg);
+            background-size: cover;
+        }
+        .tit {
+            color: #fff;
+            font-size: 32px;
+            margin: 197px 0 10px 0;
+        }
+        .desc {
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.5;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical;
+            word-break: keep-all;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: rgb(42, 42, 42);
+            color: #fff;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section id="imageType01" class="card__wrap nexon section">
+        <h2>운동하자 운동 👟</h2>
+        <p>운동의 시작, 스트레칭부터 다양한 스포츠의 종류를 알아봅시다.</p>
+        <div class="card__inner container">
+            <article class="card1">
+                <h3 class="tit">운동하자 운동 👟</h3>
+                <p class="desc">복싱이 건강에 주는 효과는 다양하지만 첫 번째로는 다이어트 효과입니다. 복싱은 짧은 시간안에 많은 에너지를 소비하는 고강도 운동으로 지방을 ...</p>
+                <a href="#">자세히 보기</a>
+            </article>
+            <article class="card2">
+                <h3 class="tit">운동하자 운동 👟</h3>
+                <p class="desc">복싱이 건강에 주는 효과는 다양하지만 첫 번째로는 다이어트 효과입니다. 복싱은 짧은 시간안에 많은 에너지를 소비하는 고강도 운동으로 지방을 ...</p>
+                <a href="#">자세히 보기</a>
+            </article>
+        </div>
+    </section>
+</body>
+</html>
