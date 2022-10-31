@@ -1,0 +1,217 @@
+<main id="main">
+    <div class="document">
+        <h2 class="t_tit">SITE를 만들어봅시다 !</h2>
+        <p class="t_desc">
+            이번에는 또 다른 형식의 카드 유형으로 사이트 구성을 만들어봅시다.
+        </p>
+        <div class="t_iframe">
+            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F9dsng1iVsw6HOFcutiPR1c%2F%25EC%2582%25AC%25EC%259D%25B4%25ED%258A%25B8-%25EB%25A7%258C%25EB%2593%25A4%25EA%25B8%25B0%3Fnode-id%3D51%253A3" allowfullscreen></iframe>
+        </div>
+
+        <hr>
+
+        <h3 class="t_tit2">1. Figma 활용하기</h3>
+        <p class="t_desc2">
+            같은 디자인의 카드를 4개씩 총 8개 배열한 형태입니다. 먼저 공통적인 카드의 틀을 만들어 놓고 <i>component</i> 처리를 해서 배열해주면
+            혹여나 수정사항이 생긴다해도 하나를 수정하면 전체가 똑같이 반영되어 수정이 용이합니다.
+        </p>
+        <img class="t_img1" src="https://tistory4.daumcdn.net/tistory/5478752/skin/images/cardType2.png" alt="카드타입02 레이아웃">
+
+        <h3 class="t_tit2">2. CSS 살펴보기</h3>
+        <div class="t_code">
+<pre><code class=""language-js>&lt;style&gt;
+    /* fonts */
+    @import url('https://webfontworld.github.io/gmarket/GmarketSans.css');
+
+    .gmark {
+        font-family: "GmarketSans";
+        font-weight: 500;
+    }
+
+    /* reset */
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: normal;
+    }
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+    img {
+        width: 100%;
+    }
+
+    /* common */
+    .container {
+        width: 1160px;
+        padding: 0 20px;
+        margin: 0 auto;
+        min-width: 1160px;
+    }
+    .section {
+        padding: 120px 0;
+    }
+    .section > h2 {     /* +는 형제 바로 밑에 있는 자식은 > */
+        font-size: 50px;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .section > p {
+        font-size: 22px;
+        font-weight: 3oo;
+        color: #666;
+        text-align: center;
+        margin-bottom: 70px;
+    }
+    .gray {
+        background-color: #f5f5f5;
+    }
+    
+    /* ir 효과(image replace 효과, 이미지 대체효과 == alt, 스크린 리더기에는 읽히고 우리 눈에는 안보이게) */
+    .ir {
+        display: block;
+        overflow: hidden;
+        font-size: 0;
+        line-height: 0;
+        text-indent: -9999px;       /* 들여쓰기 */
+    }
+
+    /* cardType02 */
+    .card__inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .card__inner .card {
+        width: 24%;
+        position: relative;
+    }
+    .card__inner .card:first-child {        /* 익스플로어 고려해서 nth 말고 퍼스트찰드로 */
+        margin-bottom: 50px;
+    }
+    .card__inner .card img {
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .card__inner .card .tit {
+        font-size: 28px;
+        margin-bottom: 10px;
+        /* 한줄효과 */
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding-right: 20px;
+    }
+    .card__inner .card .desc {
+        font-size: 18px;
+        font-weight: 300;
+        color: #666;
+        line-height: 1.4;
+        /* 세줄효과 */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; 
+        -webkit-box-orient: vertical;
+    }
+    .card__inner .card .more {
+        width: 28px;
+        height: 28px;
+        background-image: url(img/arrow.svg);
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 230px;
+        border-radius: 5px;
+    }
+&lt;/style&gt;
+</code></pre></div>
+
+        <h3 class="t_tit2">3. HTML 살펴보기</h3>
+        <div class="t_code">
+<pre><code class=""language-js>&lt;body&gt;
+    &lt;section id="cardType02" class="card__wrap gmark section gray"&gt;
+        &lt;h2&gt;계절별 추천 여행지&lt;/h2&gt;
+        &lt;p&gt;
+            봄, 여름, 가을, 겨울 4계절별 각각에 맞는 여러 여행지와 추천 식당, 카페 등을&lt;br&gt;
+            모아서 정리해보았습니다. 잘 참고하셔서 좋은 여행 되시길 바래요!
+        &lt;/p&gt;
+        &lt;div class="card__inner container"&gt;
+            lt;article class="card"&gt;
+                lt;img src="img/card_bg02_01.jpg" alt="봄 Spring"&gt;
+                lt;h3 class="tit">봄 Spring&lt;/h3&gt;
+                lt;p class="desc"&gt;봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.&lt;/p&gt;
+                lt;a href="#" class="more"&gt;&lt;span class="ir">더보기&lt;/span&gt;lt;/a&gt;
+            lt;/article&gt;
+            lt;article class="card"&gt;
+                lt;img src="img/card_bg02_02.jpg" alt="여름 Summer"&gt;
+                lt;h3 class="tit"&gt;여름 Summerlt;/h3&gt;
+                lt;p class="desc"&gt;봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.&lt;/p&gt;
+                lt;a href="#" class="more"&gt;lt;span class="ir"&gt;더보기lt;/span&gt;lt;/a&gt;
+            lt;/article&gt;
+            &lt;article class="card"&gt;
+                &lt;img src="img/card_bg02_03.jpg" alt="가을 Fall"&gt;
+                &lt;h3 class="tit"&gt;가을 Fall&lt;/h3&gt;
+                &lt;p class="desc"&gt;봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.&lt;/p&gt;
+                &lt;a href="#" class="more"&gt;&lt;span class="ir"&gt;더보기&lt;/span&gt;&lt;/a&gt;
+            &lt;/article&gt;
+            &lt;article class="card"&gt;
+                &lt;img src="img/card_bg02_04.jpg" alt="겨울 Winter"&gt;
+                &lt;h3 class="tit"&gt;겨울 Winter&lt;/h3&gt;
+                &lt;p class="desc"&gt;봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.&lt;/p&gt;
+                &lt;a href="#" class="more"&gt;&lt;span class="ir"&gt;더보기&lt;/span&gt;&lt;/a&gt;
+            &lt;/article&gt;
+            &lt;article class="card"&gt;
+                &lt;img src="img/card_bg02_05.jpg" alt="봄 Spring"&gt;
+                &lt;h3 class="tit"&gt;봄 Spring&lt;/h3&gt;
+                &lt;p class="desc"&gt;봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.&lt;/p&gt;
+                &lt;a href="#" class="more"&gt;&lt;span class="ir"&gt;더보기&lt;/span&gt;&lt;/a&gt;
+            &lt;/article&gt;
+            &lt;article class="card"&gt;
+                &lt;img src="img/card_bg02_06.jpg" alt="여름 Summer"&gt;
+                &lt;h3 class="tit"&gt;여름 Sumemr&lt;/h3&gt;
+                &lt;p class="desc"&gt;봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.&lt;/p&gt;
+                &lt;a href="#" class="more"&gt;&lt;span class="ir"&gt;더보기&lt;/span&gt;&lt;/a&gt;
+            &lt;/article&gt;
+            &lt;article class="card"&gt;
+                &lt;img src="img/card_bg02_07.jpg" alt="가을 Fall"&gt;
+                &lt;h3 class="tit"&gt;가을 Fall&lt;/h3&gt;
+                &lt;p class="desc"&gt;봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.&lt;/p&gt;
+                &lt;a href="#" class="more"&gt;&lt;span class="ir"&gt;더보기&lt;/span&gt;&lt;/a&gt;
+            &lt;/article&gt;
+            &lt;article class="card"&gt;
+                &lt;img src="img/card_bg02_08.jpg" alt="겨울 Winter"&gt;
+                &lt;h3 class="tit"&gt;겨울 Winter&lt;/h3&gt;
+                &lt;p class="desc"&gt;봄봄봄 봄이 왔어요 ~ 얇은 가디건 하나만 입어도 춥지 않은 봄이 왔습니다. 첫 번째 여행지로 추천 드릴 곳은 홍천 알파카월드 입니다.&lt;/p&gt;
+                &lt;a href="#" class="more"&gt;&lt;span class="ir"&gt;더보기&lt;/span&gt;&lt;/a&gt;
+            &lt;/article&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+&lt;/body&gt;
+</code></pre></div>
+        <p class="t_box">
+            <i>aria-hidden |</i><br>
+            버튼을 클릭 했을 때 관련 콘텐츠가 펼쳐지거나, 탭을 활성화 하는 등 사용자가 페이지에서 컨트롤과 상호작용한 후 불필요한 콘텐츠가 되는 경우 쓰는 속성입니다. 
+            이러한 속성은 스크린 리터와 같은 보조기술에서도 탐색할 수 없어 사용자의 편의성에 맞춰 설정해주시면 됩니다.
+        </p>
+
+        <h3 class="t_tit2">4. 결과 확인하기</h3>
+        <div class="t_iframe">
+            <iframe src="https://kkb75281.github.io/coding2/site/cardType/cardType02.html" frameborder="0" width="100%" height="auto"></iframe>
+        </div>
+        <div class="t_link">
+            <a class="center" href="https://github.com/kkb75281/coding2/blob/main/site/cardType/cardType02.html" target="_blank">원본 소스 보기</a>
+        </div>
+        <div class="t_link">
+            <a class="center" href="https://kkb75281.github.io/coding2/site/cardType/cardType02.html" target="_blank">실제 사이트 보기</a>
+        </div>
+        
+
+        
+        
+    </div>
+</main>
