@@ -3,14 +3,8 @@
 // 03 두개의 카드 뒤집은 결과 확인하기
 
 const memoryWrap = document.querySelector(".memory__wrap");
-const memoryDesc = memoryWrap.querySelector(".memory__info .desc");
-const times = memoryWrap.querySelector(".memory__info .times");
-const puzzle = memoryWrap.querySelectorAll(".memory__info .times .pz");
-const memoryStart = memoryWrap.querySelector(".memory__info .start");
-const memoryAgain = memoryWrap.querySelector(".memory__info .restart");
-const memoryCard = memoryWrap.querySelectorAll(".memory__card");
 const memoryCards = memoryWrap.querySelectorAll(".cards li");
-const memoryClose = memoryWrap.querySelector(".memory__close");
+const times = memoryWrap.querySelectorAll(".memory__inner .times");
 
 let cardOne, cardTwo;
 let disableDeck = false;
@@ -52,9 +46,8 @@ function matchCards(img1, img2) {
     matchedCard++;
 
     if (matchedCard == 8) {
-      alert("이걸 성공하시다니🙄");
+      alert("game over");
       soundSuccess.play();
-      memoryCard.style.pointerEvents = "none";
     }
     cardOne.removeEventListener("click", flipCard);
     cardTwo.removeEventListener("click", flipCard);
@@ -76,19 +69,16 @@ function matchCards(img1, img2) {
       disableDeck = false;
     }, 1600);
 
-    // for (let i = 1; i < 11; i++) {
-    //   $('.times').children(`.p[i]`).classList.add("hide");
+    // times.forEach(function())
 
-    //   if (i == 10) {
-    //     memoryReset();
-    //   }
-    // }
+    // times.forEach(function (time) {
+    //   time.classList.add("error");
+    // });
 
-    // $('.times').click(function() {
-    //   for(let i=1; i<11; i++){
-    //     $(this).find('p[i]').addClass('hide');
-    //   }
-    //  });
+    for (i = 5; i <= 0; i--) {
+      $(".memory__inner .times:nth-child(i)").classList.add("error");
+      i--;
+    }
 
     soundUnMatch.play();
   }
@@ -112,47 +102,16 @@ function shuffleCard() {
 
     setTimeout(() => {
       card.classList.remove("flip");
-    }, 5000);
-
-    setTimeout(() => {
-      memoryCard.style.pointerEvents = "auto";
-    }, 200 * index + 5000);
-
-    // 클릭 카드 뒤집기
-    memoryCards.forEach((card) => {
-      card.addEventListener("click", flipCard);
-    });
+    }, 4000);
 
     let imgTag = card.querySelector(".back img");
     imgTag.src = `../assets/img/memory_card_${arr[index]}.png`;
   });
 }
 
-//다시 시작하기
-function restart() {
-  // searchResult.classList.remove("show");
-  cardOne = cardTwo = "";
-  disableDeck = false;
-  matchedCard = 0;
-  memoryCards.forEach((card) => {
-    card.classList.remove("flip");
-  });
-}
+shuffleCard();
 
-// // 카드를 클릭했을 때
-// memoryCards.forEach((card) => {
-//   card.addEventListener("click", flipCard);
-// });
-
-//버튼 이벤트
-memoryStart.addEventListener("click", () => {
-  memoryStart.style.display = "none";
-  memoryDesc.classList.remove("show");
-  times.classList.add("show");
-  soundMatch.play();
-  shuffleCard();
-});
-memoryAgain.addEventListener("click", restart);
-memoryClose.addEventListener("click", () => {
-  memoryReset();
+// 카드를 클릭했을 때
+memoryCards.forEach((card) => {
+  card.addEventListener("click", flipCard);
 });

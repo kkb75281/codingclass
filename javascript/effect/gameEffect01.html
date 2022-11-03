@@ -183,6 +183,7 @@
                         <button class="restart">다시 도전하기</button>
                     </div>
                 </div>
+                <div class="search__close"></div>
             </div>
             <!-- //search_game -->
 
@@ -190,8 +191,33 @@
 
         <div class="memory__wrap">
             <div class="memory__inner">
-                <span>똑같은 그림 맞추기</span>
-                <h1>무엇이 무엇이 똑같을까 ~</h1>
+                <div class="memory__info">
+                    <span>똑같은 그림 맞추기</span>
+                    <h1>무엇이 무엇이 똑같을까 ~</h1>
+                    <div class="desc show">
+                        게임이 시작되면 10개의 퍼즐 조각이 등장합니다!<br>
+                        퍼즐 조각은 게임 횟수로 총 10번의 기회 안에<br>
+                        오른쪽 카드 그림을 맞추면 성공입니다!<br>
+                        그럼 행운을 빌게요 ( •͈ᴗ-)ᓂ-ෆ
+                    </div>
+                    <div class="times">
+                        <span class="pz p1"></span>
+                        <span class="pz p2"></span>
+                        <span class="pz p3"></span>
+                        <span class="pz p4"></span>
+                        <span class="pz p5"></span>
+                        <span class="pz p6"></span>
+                        <span class="pz p7"></span>
+                        <span class="pz p8"></span>
+                        <span class="pz p9"></span>
+                        <span class="pz p10"></span>
+                    </div>
+                    <div class="start">게임 시작 !</div>
+                    <div class="restart">다시 도전 !</div>
+                    <!-- <div class="search__result">
+                        <button class="restart">다시 도전 !</button>
+                    </div> -->
+                </div>
                 <div class="memory__card">
                     <ul class="cards">
                         <li>
@@ -324,12 +350,8 @@
                         </li>
                     </ul>
                 </div>
-                <div class="times">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <div class="memory__close">
+
                 </div>
             </div>
         </div>
@@ -395,6 +417,12 @@
             }
         })
 
+        document.querySelector(".search__close").addEventListener("click", () => {
+            $(".i2 img").attr("src", "../assets/img/game_folder_icon12.png");
+            i2.classList.remove("active");
+            searchGame.classList.remove("show");
+        })
+
         i3.addEventListener("click", () => {
             if (i3.classList.contains("active")) {
                 $(".i3 img").attr("src", "../assets/img/game_folder_icon12.png");
@@ -405,6 +433,12 @@
                 i3.classList.add("active");
                 memoryGame.classList.add("show");
             }
+        })
+
+        document.querySelector(".memory__close").addEventListener("click", () => {
+            $(".i3 img").attr("src", "../assets/img/game_folder_icon12.png");
+            i3.classList.remove("active");
+            memoryGame.classList.remove("show");
         })
 
         i4.addEventListener("click", () => {

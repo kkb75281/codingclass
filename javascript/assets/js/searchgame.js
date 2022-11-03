@@ -1719,6 +1719,7 @@ const musicPlayBtn = document.querySelector(".search__audio .play"); //노래 �
 const music = document.querySelector(".search__audio #audio");
 const searchWrap = document.querySelector(".search__wrap");
 const searchHint = document.querySelector(".search__info .hint"); //힌트 버튼
+const searchClose = document.querySelector(".search__close"); //게임 닫기 버튼
 
 let timeReamining = 120,
   answers = {},
@@ -1852,6 +1853,7 @@ function restart() {
 searchStart.addEventListener("click", startQuiz);
 searchInput.addEventListener("input", checkInput);
 searchRestart.addEventListener("click", restart);
+searchClose.addEventListener("click", endQuiz);
 
 //음악 클릭
 musicPlayBtn.addEventListener("click", () => {

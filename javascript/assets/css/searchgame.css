@@ -36,8 +36,8 @@
 
 .search__audio span svg {
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   left: 20px;
   top: 20px;
 }
@@ -87,7 +87,8 @@
 .search__inner .timer {
   position: absolute;
   top: 20px;
-  right: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   color: #fff;
   font-size: 20px;
 }
@@ -470,4 +471,16 @@
   padding: 10px 20px;
   border-radius: 30px;
   font-size: 25px;
+}
+
+.search__close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 20px;
+  height: 15px;
+  background-image: url(../img/code_close.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }

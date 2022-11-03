@@ -10,6 +10,24 @@
 }
 
 .memory__inner {
+    width: 1000px;
+    height: 600px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    padding: 50px;
+    border: 1px solid #000;
+    text-align: center;
+    overflow: scroll;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* .memory__inner {
     width: 600px;
     padding: 0 2rem;
     background: rgba(0, 0, 0, 0.9);
@@ -18,10 +36,15 @@
     top: 100px;
     border-radius: 20px;
     text-align: center;
-    /* animation: flicker 1.5s infinite alternate; */
+    animation: flicker 1.5s infinite alternate;
+} */
+
+.memory__info {
+    width: 45%;
+    position: relative;
 }
 
-.memory__inner>span {
+.memory__info>span {
     color: #fff;
     font-size: 20px;
     margin-top: 30px;
@@ -29,7 +52,7 @@
     display: inline-block;
 }
 
-.memory__inner>h1 {
+.memory__info>h1 {
     color: #fff;
     font-size: 2.5vw;
     margin-bottom: 10px;
@@ -38,7 +61,97 @@
     animation: flicker 1.5s infinite alternate;
 }
 
+.memory__info .desc {
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    line-height: 1.4;
+    font-size: 18px;
+    display: none;
+}
+
+.memory__info .desc.show {
+    display: block;
+}
+
+.memory__info .times {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    display: none;
+}
+
+.memory__info .times.show {
+    display: flex;
+}
+
+.memory__info .times .pz {
+    display: inline;
+    width: 70px;
+    height: 70px;
+    background-image: url(../img/puzzle.png);
+    background-size: cover;
+    background-position: center;
+    margin-right: -21px;
+    margin-bottom: -20px;
+}
+
+.p1.hide,
+.p2.hide,
+.p3.hide,
+.p4.hide,
+.p5.hide,
+.p6.hide,
+.p7.hide,
+.p8.hide,
+.p9.hide,
+.p10.hide {
+    background-image: url(../img/puzzle-outline.png);
+}
+
+.memory__info .start {
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    transform: translateX(-50%);
+    background: #73FBF9;
+    width: 70%;
+    border-radius: 50px;
+    font-size: 18px;
+    border: 2px solid #73FBF9;
+    padding: 15px 20px;
+    color: #333;
+}
+
+.memory__info .restart {
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    transform: translateX(-50%);
+    background: #73FBF9;
+    width: 70%;
+    border-radius: 50px;
+    font-size: 18px;
+    border: 2px solid #73FBF9;
+    padding: 15px 20px;
+    color: #333;
+    display: none;
+}
+
+.memory__info .restart.show {
+    display: block;
+}
+
 .memory__card {
+    width: 55%;
     padding: 30px;
 }
 
@@ -103,28 +216,6 @@
     animation: shakeY 1s 1;
 }
 
-@keyframes flicker {
-
-    0%,
-    100% {
-        /* box-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #73FBF9,
-            0 0 80px #73FBF9, 0 0 90px #73FBF9, 0 0 100px #73FBF9, 0 0 150px #73FBF9; */
-        /* box-shadow:
-            0 0 .5rem #73FBF9,
-            inset 0 0 .5rem #73FBF9,
-            0 0 2rem #73FBF9,
-            inset 0 0 2rem #73FBF9,
-            0 0 4rem #73FBF9,
-            inset 0 0 4rem #73FBF9; */
-    }
-
-    /* 20%,
-    24%,
-    55% {
-        text-shadow: none;
-    } */
-}
-
 @keyframes shakeX {
 
     from,
@@ -182,26 +273,16 @@
     }
 }
 
-.memory__wrap .times {
+
+
+.memory__close {
     position: absolute;
-    content: '';
-    top: 10px;
-    right: -50px;
-    width: 30px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.memory__wrap .times span {
-    background-color: #EA3CF1;
-    box-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #EA3CF1, 0 0 42px #EA3CF1,
-        0 0 82px #EA3CF1, 0 0 92px #EA3CF1;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    margin-bottom: 20px;
-}
-
-.memory__wrap .times span.error {
-    background-color: transparent;
+    top: 30px;
+    right: 30px;
+    width: 20px;
+    height: 15px;
+    background-image: url(../img/code_close.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
