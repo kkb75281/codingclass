@@ -1086,89 +1086,89 @@ document.write(name3);
         }
 
         // 19
-        {
-            const obj = {
-                a: 100,
-                b: 200,
-                c: "javascript"
-            }
+        // {
+        //     const obj = {
+        //         a: 100,
+        //         b: 200,
+        //         c: "javascript"
+        //     }
 
-            // document.write(obj.b);
+        //     // document.write(obj.b);
 
-            // 데이터 불러오기 (복사)
-            const spread = { ...obj }
+        //     // 데이터 불러오기 (복사)
+        //     const spread = { ...obj }
 
-            document.write(spread.a);
-            document.write(spread.b);
-            document.write(spread.c);
-        }
+        //     document.write(spread.a);
+        //     document.write(spread.b);
+        //     document.write(spread.c);
+        // }
 
         // 20
-        {
-            const obj = {
-                a: 100,
-                b: 200,
-                c: "javascript"
-            }
+        // {
+        //     const obj = {
+        //         a: 100,
+        //         b: 200,
+        //         c: "javascript"
+        //     }
 
-            // 데이터 불러오기 (추가)
-            const spread = { ...obj, d: "jquery" }
+        //     // 데이터 불러오기 (추가)
+        //     const spread = { ...obj, d: "jquery" }
 
-            document.write(spread.a);
-            document.write(spread.b);
-            document.write(spread.c);
-            document.write(spread.d);
-        }
+        //     document.write(spread.a);
+        //     document.write(spread.b);
+        //     document.write(spread.c);
+        //     document.write(spread.d);
+        // }
 
         // 21
-        {
-            const objA = {
-                a: 100,
-                b: 200,
-            }
-            const objB = {
-                c: "javascript",
-                d: "jquery"
-            }
+        // {
+        //     const objA = {
+        //         a: 100,
+        //         b: 200,
+        //     }
+        //     const objB = {
+        //         c: "javascript",
+        //         d: "jquery"
+        //     }
 
-            // 데이터 불러오기 (결합)
-            const spread = { ...objA, ...objB }
+        //     // 데이터 불러오기 (결합)
+        //     const spread = { ...objA, ...objB }
 
-            document.write(spread.a);
-            document.write(spread.b);
-            document.write(spread.c);
-            document.write(spread.d);
-        }
+        //     document.write(spread.a);
+        //     document.write(spread.b);
+        //     document.write(spread.c);
+        //     document.write(spread.d);
+        // }
 
         // 22(많이 쓰임)
-        {
-            const obj = {
-                a: 100,
-                b: 200,
-                c: "javascript"
-            }
-            const { a, b, c } = obj
+        // {
+        //     const obj = {
+        //         a: 100,
+        //         b: 200,
+        //         c: "javascript"
+        //     }
+        //     const { a, b, c } = obj
 
-            document.write(a);
-            document.write(b);
-            document.write(c);
-        }
+        //     document.write(a);
+        //     document.write(b);
+        //     document.write(c);
+        // }
 
         // 23(많이 쓰임)
-        {
-            const obj = {
-                a: 100,
-                b: 200,
-                c: "javascript"
-            }
+        // {
+        //     const obj = {
+        //         a: 100,
+        //         b: 200,
+        //         c: "javascript"
+        //     }
 
-            // 키 값을 변경해서 쓸 수도 있음
-            const { a: name1, b: name2, c: name3 } = obj
+        //     // 키 값을 변경해서 쓸 수도 있음
+        //     const { a: name1, b: name2, c: name3 } = obj
 
-            document.write(name1);
-            document.write(name2);
-            document.write(name3);
-        }
+        //     document.write(name1);
+        //     document.write(name2);
+        //     document.write(name3);
+        // }
 
     </script>
 </body>
