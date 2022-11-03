@@ -14,33 +14,40 @@
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
 }
+
 .header__logo {
     width: 10%;
     font-size: 30px;
     font-weight: 700;
     text-transform: uppercase;
 }
+
 .header__logo em {
     font-size: 18px;
     font-weight: 400;
 }
+
 .header__menu {
     width: 86%;
     text-align: center;
 }
+
 .header__menu li {
     display: inline;
 }
+
 .header__menu li a {
     padding: 13px 30px;
     margin: 0 5px;
     transition: background-color 0.3s;
 }
+
 .header__menu li a:hover {
     background-color: #39342ff7;
     color: #fff;
     border-radius: 5px;
 }
+
 .header__menu ul li.active a {
     background-color: #39342ff7;
     color: #fff;
@@ -52,9 +59,11 @@
     width: 4%;
     float: right;
 }
+
 .header__member img {
     width: 50px;
 }
+
 /* .header__member a {
     font-size: 16px;
     border: 1px solid #000;
@@ -76,6 +85,7 @@
     height: 50px;
     cursor: pointer;
 }
+
 .header__ham span {
     display: block;
     background: #666;
@@ -84,23 +94,28 @@
     border-radius: 3px;
     margin-left: 10px;
     margin-top: 5px;
-    transition: 0.25s margin 0.25s, 0.25s transform ;
+    transition: 0.25s margin 0.25s, 0.25s transform;
 }
+
 .header__ham span:nth-child(1) {
     margin-top: 17px;
 }
+
 .header__ham.active span {
     /* 시간 transform 딜레이 */
-    transition: 0.25s margin, 0.25s transform 0.25s ;
+    transition: 0.25s margin, 0.25s transform 0.25s;
 }
+
 .header__ham.active span:nth-child(1) {
     margin-top: 25px;
     margin-bottom: -7px;
     transform: rotate(45deg);
 }
+
 .header__ham.active span:nth-child(2) {
     transform: rotate(45deg);
 }
+
 .header__ham.active span:nth-child(3) {
     margin-top: -2px;
     transform: rotate(135deg);
@@ -118,30 +133,35 @@
         text-align: right;
         transition: right 0.4s ease-in;
     }
+
     .header__menu ul li {
         display: block;
         margin: 20px;
-    }.header__menu ul li a {
+    }
+
+    .header__menu ul li a {
         padding: 10px;
         white-space: nowrap;
     }
+
     .header__menu.active {
         right: 0;
     }
+
     .header__logo {
         width: auto;
         float: left;
     }
+
     .header__member {
         width: auto;
         float: right;
         margin-right: 50px;
     }
+
     .header__ham {
         display: block;
     }
 }
 
-@media (max-width: 600px) {
-    
-}
+@media (max-width: 600px) {}
