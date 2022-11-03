@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://webfontworld.github.io/sandbox/SBAggro.css" rel="stylesheet">
+    <!-- 300 500 700 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "SBAggro";
+            font-weight: 300;
+        }
+
+        .fixed {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .scrollTop {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            width: 60px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            line-height: 40px;
+            z-index: 100000;
+        }
+
+        /* layout */
+        #contents {}
+
+        #section1 {
+            height: 10000px;
+        }
+
+        #section2 {}
+
+        #section3 {}
+
+        #section4 {}
+
+        #section5 {}
+
+        #section6 {}
+
+        /* sec1 */
+        .sec1_text1 {
+            font-size: 8vw;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .sec1_text2 {
+            font-size: 8vw;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .sec1_text3 {
+            width: 100%;
+            height: 100vh;
+            background: url(https://images.unsplash.com/photo-1579547621706-1a9c79d5c9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .sec1_text4 {
+            width: 50vw;
+            height: 50vw;
+            border-radius: 50%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            line-height: 50vw;
+            font-size: 8vw;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scrollTop">0</div>
+    <div id="contents">
+        <section id="section1">
+            <div class="sec1">
+                <div class="sec1_text1 fixed" data-0="top: 50%; opacity: 1" data-500="top: 40%; opacity: 0">
+                    안녕하세요!
+                </div>
+                <div class="sec1_text2 fixed" data-500="top: 70%; opacity: 0; transform: translate(-50%, -50%) scale(1)"
+                    data-1000="top: 50%; opacity: 1; transform: translate(-50%, -50%) scale(1)"
+                    data-1500="top: 50%; opacity: 1; transform: translate(-50%, -50%) scale(0)">
+                    프론트앤드 개발자입니다!
+                </div>
+            </div>
+            <div class="sec1_text3 fixed"
+                data-1300="width: 0%; height: 0vh; transform: translate(-50%, -50%) rotate(180deg);"
+                data-2300="width: 100%; height: 100vh; transform: translate(-50%, -50%) rotate(0deg);">
+            </div>
+            <div class="sec1_text4 fixed" data-2000="transform: translate(-50%, -50%) scale(0) rotate(-360deg);"
+                data-3000="transform: translate(-50%, -50%) scale(1) rotate(0deg);">HELLO!🙌🏻</div>
+        </section>
+        <!-- // section1-->
+        <section id="section2"></section><!-- // section2-->
+        <section id="section3"></section><!-- // section3-->
+        <section id="section4"></section><!-- // section4-->
+        <section id="section5"></section><!-- // section5-->
+        <section id="section6"></section><!-- // section6-->
+    </div>
+    <!-- // contents -->
+
+    <script src="https://cdn.jsdelivr.net/npm/skrollr@0.6.26/dist/skrollr.min.js"></script>
+    <script>
+        const s = skrollr.init();
+
+        function scroll() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            document.querySelector(".scrollTop").innerText = Math.ceil(scrollTop);
+
+            requestAnimationFrame(scroll);
+        }
+        scroll();
+    </script>
+</body>
+
+</html>

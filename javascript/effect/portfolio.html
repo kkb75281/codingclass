@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오</title>
+
+    <link href="https://webfontworld.github.io/sandbox/SBAggro.css" rel="stylesheet">
+    <!-- 300 500 700 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "SBAggro";
+            font-weight: 500;
+        }
+
+        .fixed {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .scrollTop {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            width: 60px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            line-height: 40px;
+            font-weight: 300;
+            z-index: 100000;
+        }
+
+        /* layout */
+        #contents {}
+
+        #section1 {
+            height: 10000px;
+        }
+
+        #section2 {}
+
+        #section3 {}
+
+        #section4 {}
+
+        #section5 {}
+
+        #section6 {}
+
+        /* sec1 */
+        .sec1_text1 {
+            font-size: 8vw;
+            white-space: nowrap;
+        }
+
+        .sec1_text1_1 {
+            width: 100px;
+            height: 100px;
+            background: url(../assets/img/hand.png);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .sec1_text2 {
+            font-size: 8vw;
+            white-space: nowrap;
+        }
+
+        .sec1_text3 {
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(241, 234, 220);
+        }
+
+        .sec1_text4 {
+            width: 40%;
+            height: 90vh;
+            background: url(../assets/img/me.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .sec1_text5 {
+            font-size: 8vw;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scrollTop">0</div>
+    <div id="contents">
+        <section id="section1">
+            <div class="sec1">
+                <div class="sec1_text1 fixed" data-0="top: 50%; opacity: 1" data-1000="top: 50%; opacity: 0">
+                    HELLO
+                </div>
+                <div class="sec1_text1_1 fixed" 
+                    data-100="left: 70%; transform: translate(-50%, -50%); opacity: 0; rotate(180deg);"
+                    data-300="left: 70%; transform: translate(-50%, -50%); opacity: 1; rotate(0deg);"
+                    data-1000="left: 70%; transform: translate(-50%, -50%); opacity: 0">
+                </div>
+                <div class="sec1_text2 fixed"
+                    data-1000="top: 70%; opacity: 0; transform: translate(-50%, -50%) scale(1)"
+                    data-1500="top: 50%; opacity: 1; transform: translate(-50%, -50%) scale(1)"
+                    data-2000="top: 50%; opacity: 1; transform: translate(-50%, -50%) scale(0)">
+                    프론트앤드 개발자
+                </div>
+                <div class="sec1_text3 fixed" data-1800="width: 0%; transform: translate(-50%, -50%) rotate(180deg);"
+                    data-2800="width: 100%; transform: translate(-50%, -50%) rotate(0deg);">
+                </div>
+                <div class="sec1_text4 fixed"
+                    data-2500="left:50%; transform: translate(-50%, -50%) scale(0) rotate(-360deg);"
+                    data-3500="left: 35%; transform: translate(-50%, -50%) scale(1) rotate(0deg);">
+                </div>
+                <div class="sec1_text5 fixed" data-2700="top: 10%; right:10%; opacity: 0"
+                    data-3200="top: 30%; right:30%; opacity: 1">
+                    권규비 입니다!
+                </div>
+            </div>
+        </section>
+        <!-- // section1-->
+        <section id="section2"></section><!-- // section2-->
+        <section id="section3"></section><!-- // section3-->
+        <section id="section4"></section><!-- // section4-->
+        <section id="section5"></section><!-- // section5-->
+        <section id="section6"></section><!-- // section6-->
+    </div>
+    <!-- // contents -->
+
+    <script src="https://cdn.jsdelivr.net/npm/skrollr@0.6.26/dist/skrollr.min.js"></script>
+    <script>
+        const s = skrollr.init();
+
+        function scroll() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            document.querySelector(".scrollTop").innerText = Math.ceil(scrollTop);
+
+            requestAnimationFrame(scroll);
+        }
+        scroll();
+    </script>
+</body>
+
+</html>
