@@ -1883,6 +1883,7 @@ searchStart.addEventListener("click", startQuiz);
 searchInput.addEventListener("input", checkInput);
 searchRestart.addEventListener("click", restart);
 searchClose.addEventListener("click", resetQuiz);
+document.querySelector(".i2").addEventListener("click", resetQuiz);
 
 //음악 클릭
 musicPlayBtn.addEventListener("click", () => {

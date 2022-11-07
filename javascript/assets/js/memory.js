@@ -187,3 +187,4 @@ memoryAgain.addEventListener("click", () => {
 memoryClose.addEventListener("click", () => {
   memoryReset();
 });
+document.querySelector(".i3").addEventListener("click", memoryReset);

@@ -299,3 +299,7 @@ window.addEventListener("load", ()=>{
     loadMusic(musicIndex);      //음악 재생
     playListMusic();            //리스트 초기화
 });
+
+document.querySelector(".i1").addEventListener("click", () => {
+    musicAudio.pause();
+})
