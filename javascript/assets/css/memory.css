@@ -104,16 +104,7 @@
     margin-bottom: -20px;
 }
 
-.p1.hide,
-.p2.hide,
-.p3.hide,
-.p4.hide,
-.p5.hide,
-.p6.hide,
-.p7.hide,
-.p8.hide,
-.p9.hide,
-.p10.hide {
+.memory__info .times .pz.hide {
     background-image: url(../img/puzzle-outline.png);
 }
 

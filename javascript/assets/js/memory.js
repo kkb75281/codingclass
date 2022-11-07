@@ -15,6 +15,7 @@ const memoryClose = memoryWrap.querySelector(".memory__close");
 let cardOne, cardTwo;
 let disableDeck = false;
 let matchedCard = 0;
+let error = 0;
 
 let sound = [
   "../assets/audio/match.m4a",
@@ -54,6 +55,7 @@ function matchCards(img1, img2) {
     if (matchedCard == 8) {
       alert("이걸 성공하시다니🙄");
       soundSuccess.play();
+      memoryAgain.classList.add("show");
       memoryCard.style.pointerEvents = "none";
     }
     cardOne.removeEventListener("click", flipCard);
@@ -76,19 +78,14 @@ function matchCards(img1, img2) {
       disableDeck = false;
     }, 1600);
 
-    // for (let i = 1; i < 11; i++) {
-    //   $('.times').children(`.p[i]`).classList.add("hide");
+    if (error == 9) {
+      alert("아쉽게도 10번의 기회를 다 쓰셨네요 :( 다시 시도해주세요!");
+      memoryAgain.classList.add("show");
+    }
 
-    //   if (i == 10) {
-    //     memoryReset();
-    //   }
-    // }
+    puzzle[error].classList.add("hide");
 
-    // $('.times').click(function() {
-    //   for(let i=1; i<11; i++){
-    //     $(this).find('p[i]').addClass('hide');
-    //   }
-    //  });
+    error++;
 
     soundUnMatch.play();
   }
@@ -115,7 +112,7 @@ function shuffleCard() {
     }, 5000);
 
     setTimeout(() => {
-      memoryCard.style.pointerEvents = "auto";
+      memoryCard.style.pointerEvents = "none";
     }, 200 * index + 5000);
 
     // 클릭 카드 뒤집기
@@ -130,13 +127,33 @@ function shuffleCard() {
 
 //다시 시작하기
 function restart() {
-  // searchResult.classList.remove("show");
   cardOne = cardTwo = "";
   disableDeck = false;
   matchedCard = 0;
-  memoryCards.forEach((card) => {
-    card.classList.remove("flip");
-  });
+  error = 0;
+  shuffleCard();
+  memoryAgain.classList.remove("show");
+  document.querySelector(".memory__info .times .p1").classList.remove("hide");
+  document.querySelector(".memory__info .times .p2").classList.remove("hide");
+  document.querySelector(".memory__info .times .p3").classList.remove("hide");
+  document.querySelector(".memory__info .times .p4").classList.remove("hide");
+  document.querySelector(".memory__info .times .p5").classList.remove("hide");
+  document.querySelector(".memory__info .times .p6").classList.remove("hide");
+  document.querySelector(".memory__info .times .p7").classList.remove("hide");
+  document.querySelector(".memory__info .times .p8").classList.remove("hide");
+  document.querySelector(".memory__info .times .p9").classList.remove("hide");
+  document.querySelector(".memory__info .times .p10").classList.remove("hide");
+}
+
+// 게임 나갔다가 다시 들어갔을때 초기화
+function memoryReset() {
+  cardOne = cardTwo = "";
+  disableDeck = false;
+  matchedCard = 0;
+  error = 0;
+  memoryDesc.classList.add("show");
+  memoryStart.style.display = "block";
+  times.classList.remove("show");
 }
 
 // // 카드를 클릭했을 때
@@ -151,8 +168,22 @@ memoryStart.addEventListener("click", () => {
   times.classList.add("show");
   soundMatch.play();
   shuffleCard();
+  document.querySelector(".memory__info .times .p1").classList.remove("hide");
+  document.querySelector(".memory__info .times .p2").classList.remove("hide");
+  document.querySelector(".memory__info .times .p3").classList.remove("hide");
+  document.querySelector(".memory__info .times .p4").classList.remove("hide");
+  document.querySelector(".memory__info .times .p5").classList.remove("hide");
+  document.querySelector(".memory__info .times .p6").classList.remove("hide");
+  document.querySelector(".memory__info .times .p7").classList.remove("hide");
+  document.querySelector(".memory__info .times .p8").classList.remove("hide");
+  document.querySelector(".memory__info .times .p9").classList.remove("hide");
+  document.querySelector(".memory__info .times .p10").classList.remove("hide");
 });
-memoryAgain.addEventListener("click", restart);
+memoryAgain.addEventListener("click", () => {
+  restart();
+
+  // puzzle.children.classList.remove("hide");
+});
 memoryClose.addEventListener("click", () => {
   memoryReset();
 });
