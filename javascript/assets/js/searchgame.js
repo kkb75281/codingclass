@@ -1722,9 +1722,11 @@ const searchHint = document.querySelector(".search__info .hint"); //힌트 버�
 const searchClose = document.querySelector(".search__close"); //게임 닫기 버튼
 
 let timeReamining = 120,
-  answers = {},
-  score = 0;
-(timeInterval = ""), (ListAll.innerHTML = cssProperty.length);
+    answers = {},
+    score = 0;
+    timeInterval = ""
+
+ListAll.innerHTML = cssProperty.length;
 
 musicStopBtn.style.display = "block";
 musicPlayBtn.style.display = "none";
@@ -1759,7 +1761,7 @@ function startQuiz() {
 }
 
 //인풋 체크하기
-function checkInput() {
+function checkInput(event) {
   let input = event.currentTarget.value.trim().toLowerCase();
 
   if (answers.hasOwnProperty(input) && !answers[input]) {
@@ -1803,7 +1805,7 @@ function reduceTime() {
   if (timeReamining == 0) endQuiz();
 
   searchTime.innerHTML = displayTime();
-  console.log(searchTime);
+  // console.log(searchTime);
 }
 
 //시간 체크
@@ -1838,6 +1840,7 @@ function endQuiz() {
   let point = Math.round((score / cssProperty.length) * 100);
   Result.innerHTML = `${point}점 (${score}/${cssProperty.length})<br><br>이제는 우리가 헤어져야 할 시간~ <br>다음에 또 만나요 ^.^`;
 }
+
 //다시 시작하기
 function restart() {
   setTimeout(() => {
@@ -1845,29 +1848,41 @@ function restart() {
     timeReamining = 120;
     score = 0;
     correctList.innerHTML = "0";
+
+    searchAnswers.innerHTML = "";
+    searchMissAnswer.innerHTML = "";
+
+    searchMissAnswer.style.display="none";
+
     startQuiz();
   }, 1000);
 }
 
 // 리셋
-// function resetQuiz() {
-//   timeReamining = 120,
-//   answers = {},
-//   score = 0;
-//   (timeInterval = ""), (ListAll.innerHTML = cssProperty.length);
+function resetQuiz () {
+  searchResult.classList.remove("show");
+  searchStart.style.display = "block";
+  timeReamining = 120;
+  score = 0;
+  correctList.innerText = "0";
 
-//   musicStopBtn.style.display = "none";
-//   musicPlayBtn.style.display = "block";
-//   music.pause();
-// }
+  searchAnswers.innerHTML = "";
+  searchMissAnswer.innerHTML = "";
 
-
+  searchMissAnswer.style.display="none";
+  
+  music.pause();
+  musicPlayBtn.style.display = "none";
+  musicStopBtn.style.display = "block";
+  searchTime.innerText = displayTime();
+  clearInterval(timeInterval);
+}
 
 //버튼 이벤트
 searchStart.addEventListener("click", startQuiz);
 searchInput.addEventListener("input", checkInput);
 searchRestart.addEventListener("click", restart);
-// searchClose.addEventListener("click", resetQuiz);
+searchClose.addEventListener("click", resetQuiz);
 
 //음악 클릭
 musicPlayBtn.addEventListener("click", () => {
@@ -1879,37 +1894,4 @@ musicStopBtn.addEventListener("click", () => {
   music.play();
   musicPlayBtn.style.display = "block";
   musicStopBtn.style.display = "none";
-});
-
-//힌트 버튼 클릭시 등장
-// searchHint.addEventListener("click", () => {
-//     searchList.classList.toggle("show");
-//     searchList.style.display = "block";
-// })
-
-//아이콘 클릭시 등장
-// document.querySelector(".icon2").addEventListener("click", () => {
-//   searchWrap.classList.toggle("show");
-// });
-
-// document.querySelector(".icon2.active").addEventListener("click", () => {
-//   music.pause();
-// });
-
-searchClose.addEventListener("click", () => {
-  searchResult.classList.remove("show");
-    searchStart.style.display = "block";
-    timeReamining = 120;
-    score = 0;
-    correctList.innerText = "0";
-
-    searchAnswers.innerHTML = "";
-    searchMissAnswer.innerHTML = "";
-
-    
-    music.pause();
-    musicPlayBtn.style.display = "none";
-    musicStopBtn.style.display = "block";
-    searchTime.innerText = displayTime();
-    clearInterval(timeInterval);
 });
