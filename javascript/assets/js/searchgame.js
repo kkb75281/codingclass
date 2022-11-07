@@ -1849,11 +1849,25 @@ function restart() {
   }, 1000);
 }
 
+// 리셋
+// function resetQuiz() {
+//   timeReamining = 120,
+//   answers = {},
+//   score = 0;
+//   (timeInterval = ""), (ListAll.innerHTML = cssProperty.length);
+
+//   musicStopBtn.style.display = "none";
+//   musicPlayBtn.style.display = "block";
+//   music.pause();
+// }
+
+
+
 //버튼 이벤트
 searchStart.addEventListener("click", startQuiz);
 searchInput.addEventListener("input", checkInput);
 searchRestart.addEventListener("click", restart);
-searchClose.addEventListener("click", endQuiz);
+// searchClose.addEventListener("click", resetQuiz);
 
 //음악 클릭
 musicPlayBtn.addEventListener("click", () => {
@@ -1881,3 +1895,21 @@ musicStopBtn.addEventListener("click", () => {
 // document.querySelector(".icon2.active").addEventListener("click", () => {
 //   music.pause();
 // });
+
+searchClose.addEventListener("click", () => {
+  searchResult.classList.remove("show");
+    searchStart.style.display = "block";
+    timeReamining = 120;
+    score = 0;
+    correctList.innerText = "0";
+
+    searchAnswers.innerHTML = "";
+    searchMissAnswer.innerHTML = "";
+
+    
+    music.pause();
+    musicPlayBtn.style.display = "none";
+    musicStopBtn.style.display = "block";
+    searchTime.innerText = displayTime();
+    clearInterval(timeInterval);
+});
