@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../assets/css/music.css">
     <link rel="stylesheet" href="../assets/css/searchgame.css">
     <link rel="stylesheet" href="../assets/css/memory.css">
+    <link rel="stylesheet" href="../assets/css/tetris.css">
 </head>
 
 <body>
@@ -45,14 +46,15 @@
             </div>
             <div class="icon i4">
                 <img src="../assets/img/game_folder_icon12.png" alt="4">
-                <span>ccc</span>
+                <span>tetris</span>
             </div>
             <div class="icon i5">
                 <img src="../assets/img/game_folder_icon12.png" alt="5">
                 <span>ddd</span>
             </div>
-            <div class="icon i6"><a href="https://github.com/kkb75281/codingclass/blob/main/javascript/effect/gameEffect01.html">
-                <img src="../assets/img/game_folder_icon16.png" alt="코드보기"></a>
+            <div class="icon i6"><a
+                    href="https://github.com/kkb75281/codingclass/blob/main/javascript/effect/gameEffect01.html">
+                    <img src="../assets/img/game_folder_icon16.png" alt="코드보기"></a>
                 <span>Code</span>
             </div>
         </div>
@@ -188,7 +190,9 @@
             <!-- //search_game -->
 
         </div>
+        <!-- //search_game -->
 
+        <!-- memory_game -->
         <div class="memory__wrap">
             <div class="memory__inner">
                 <div class="memory__info">
@@ -355,6 +359,22 @@
                 </div>
             </div>
         </div>
+        <!-- //memory_game -->
+
+        <!-- tetris_game -->
+        <div class="tetris__wrap">
+            <div class="tetris__inner">
+                <!-- <div class="tetris__start"></div>
+                <div class="tetris__restart"></div> -->
+                <div class="tetris__play">
+                    <div class="playground">
+                        <ul></ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- //tetris_game -->
     </div>
 
 
@@ -364,6 +384,7 @@
     <script src="../assets/js/music.js"></script>
     <script src="../assets/js/searchgame.js"></script>
     <script src="../assets/js/memory.js"></script>
+    <script src="../assets/js/tetris.js"></script>
     <script>
         $(".i1").draggable({});
         $(".i2").draggable({});
@@ -374,6 +395,7 @@
         $(".music__wrap").draggable();
         $(".search__wrap").draggable();
         $(".memory__wrap").draggable();
+        // $(".tetris__wrap").draggable();
 
         const icon = document.querySelector(".icon");
         const i1 = document.querySelector(".i1");
@@ -562,31 +584,31 @@
         }
 
         //z-index 변화
-      const BoxList = document.querySelectorAll(".game__box > div");
-      BoxList.forEach((el, index) => {
-        console.log(el);
-        console.log(index);
-        el.style.zIndex = index;
-        el.addEventListener("mousedown", function () {
-          let maxNum = Math.max(...zIndexArray);
-          let maxIndex = zIndexArray.findIndex((arr) => arr === maxNum);
-          console.log(index);
-          console.log(maxNum, maxIndex);
-          zIndexArray = zIndexArray.map((arr) => {
-            if (arr > zIndexArray[index]) {
-              return arr - 1;
-            } else {
-              return arr;
-            }
-          });
-          zIndexArray[index] = maxNum;
-          array.forEach((el, index) => {
-            el.style.zIndex = zIndexArray[index];
-          });
+        const BoxList = document.querySelectorAll(".game__box > div");
+        BoxList.forEach((el, index) => {
+            // console.log(el);
+            // console.log(index);
+            el.style.zIndex = index;
+            el.addEventListener("mousedown", function () {
+                let maxNum = Math.max(...zIndexArray);
+                let maxIndex = zIndexArray.findIndex((arr) => arr === maxNum);
+                console.log(index);
+                console.log(maxNum, maxIndex);
+                zIndexArray = zIndexArray.map((arr) => {
+                    if (arr > zIndexArray[index]) {
+                        return arr - 1;
+                    } else {
+                        return arr;
+                    }
+                });
+                zIndexArray[index] = maxNum;
+                array.forEach((el, index) => {
+                    el.style.zIndex = zIndexArray[index];
+                });
+            });
         });
-      });
-      let array = [...BoxList];
-      let zIndexArray = array.map((arr) => Number(arr.style.zIndex));
+        let array = [...BoxList];
+        let zIndexArray = array.map((arr) => Number(arr.style.zIndex));
 
     </script>
 
