@@ -370,8 +370,28 @@
                     <div class="playground">
                         <ul></ul>
                     </div>
+                    <div class="score"></div>
+                    <div class="popup">
+                        아래 시작 버튼을 눌러주세요 !<br><br>
+                        ↑ : 모양바꾸기 →↓← : 위치조작 spacebar : 빨리내리기
+                    </div>
                 </div>
-
+                <div class="tetris__button">
+                    <div class="arrow">
+                        <span class="up"></span>
+                        <span class="right"></span>
+                        <span class="down"></span>
+                        <span class="left"></span>
+                    </div>
+                    <div class="reset">
+                        <span class="start"><em>Start</em></span>
+                        <span class="restart"><em>Restart</em></span>
+                    </div>
+                </div>
+                <div class="tetris__audio">
+                    <audio id="audio" src="../assets/audio/tetris.mp3" loop="loop"></audio>
+                    <audio id="endAudio" src="../assets/audio/tetris.mp3" loop="loop"></audio>
+                </div>
             </div>
         </div>
         <!-- //tetris_game -->
@@ -609,6 +629,16 @@
         });
         let array = [...BoxList];
         let zIndexArray = array.map((arr) => Number(arr.style.zIndex));
+
+        // z-index
+        // icon.forEach((el, i) => {
+        //     el.addEventListener("click", () => {
+        //         BoxList.forEach((e) => {
+        //             e.classList.remove("zIndex");
+        //             BoxList[i].classList.add("zIndex");
+        //         })
+        //     })
+        // })
 
     </script>
 
