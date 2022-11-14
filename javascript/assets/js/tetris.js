@@ -4,20 +4,14 @@ const popUp = tetrisWrap.querySelector(".tetris__play .popup");
 const startBtn = tetrisWrap.querySelector(".reset .start");
 const result = tetrisWrap.querySelector(".tetris__play .result");
 const restartBtn = tetrisWrap.querySelector(".reset .tetRestart");
-// const resultTime = tetrisWrap.querySelector(".tetris__total .time span");
-// const resultLine = tetrisWrap.querySelector(".tetris__total .line span");
 const tetScore = tetrisWrap.querySelector(".tetris__play .score");
-// const tetrisInfo = tetrisWrap.querySelector(".tetris__info");
-// const tetrisIcon2 = document.querySelector(".icon4");
-// const tetrisCloseBtn = document.querySelector(".tetris__close__btn");
-// const tetrisGif = document.querySelector(".tetris__gif");
 let tetrisMusic = new Audio("../assets/audio/tetris.mp3");
 let tetrisMatchMusic = new Audio("../assets/audio/match.m4a");
 let tetrisEndMusic = new Audio("../assets/audio/unmatch.m4a");
 
 // variables
 let rows = 15;
-let cols = 14; // 난이도의 유동성을 위해 행과 열의 갯수를 변수에 저장함. 해당 값을 바꾸면 됨.
+let cols = 14; // 행과 열의 갯수 변수로 지정
 
 let tetrisScore = 0;
 let duration = 500;
@@ -31,7 +25,7 @@ let celectT;
 // 블록 정보
 const movingItem = {
   type: "Tmino", // 블록 이름
-  direction: 0, // 블록의 모양을 지정해줄 정보
+  direction: 0, // 블록의 방향
   top: 0, // 위에서의 좌푯값
   left: 5, // 왼쪽에서의 좌푯값
 };
@@ -429,37 +423,20 @@ function dropBlock() {
   }, 10);
 }
 
-// 시간 설정하기
-// function setTime() {
-//   setTetrisTime = setInterval(() => {
-//     tetrisTime++;
-//     document.querySelector(".tetris__info .time span").innerText = tetrisTime;
-//   }, 1000);
-// }
-
 // 게임 오버
 function tetrisGameover() {
   tetrisMusic.pause();
   tetrisMusic.currentTime = 0;
   clearInterval(setTetrisTime);
   duration = 500;
-  // result.classList.remove("show");
-  // tetrisGif.classList.remove("show");
   result.classList.add("show");
-  // resultTime.innerText = tetrisTime;
-  // resultLine.innerText = tetrisScore;
-  // tetScore.innerText = tetrisTime + tetrisScore * 5;
 }
 
 // 게임 시작하기
 function popUpFunc() {
   stopTetris = false;
   popUp.classList.remove("show");
-  // tetrisInfo.classList.add("show");
-  // tetrisGif.classList.add("show");
-  // document.querySelector(".tetris__restart").classList.remove("show");
   generateNewBlock();
-  // setTime();
   tetrisMusic.play();
   tetrisMusic.loop = true;
 }
@@ -468,13 +445,11 @@ function popUpFunc() {
 function resetTetris() {
   tetrisMusic.pause();
   tetrisMusic.currentTime = 0;
-  // tetrisInfo.classList.remove("show");
   clearInterval(setTetrisTime);
   tetrisScore = 0;
   tetrisTime = 0;
   stopTetris = true;
   duration = 500;
-  document.querySelector(".tetris__info .time span").innerText = tetrisTime;
 
   const tetrisMinos = playground.querySelectorAll("li > ul > li");
   tetrisMinos.forEach((minos) => {
@@ -488,15 +463,39 @@ document.addEventListener("keydown", (e) => {
   switch (e.keyCode) {
     case 39: // 오른쪽 화살표를 누른 경우
       moveBlock("left", 1); // 이동하기 함수 실행
+      document.querySelector(".arrow .right").animate(
+        {
+          opacity: 0.7,
+        },
+        100
+      );
       break;
     case 37: // 왼쪽 화살표를 누른 경우
       moveBlock("left", -1);
+      document.querySelector(".arrow .left").animate(
+        {
+          opacity: 0.7,
+        },
+        100
+      );
       break;
     case 40: // 아래 화살표를 누른 경우
       moveBlock("top", 1);
+      document.querySelector(".arrow .down").animate(
+        {
+          opacity: 0.7,
+        },
+        100
+      );
       break;
     case 38: // 위 화살표를 누른 경우
       changeDirection(); // 모양 바꾸기 함수 실행
+      document.querySelector(".arrow .up").animate(
+        {
+          opacity: 0.7,
+        },
+        100
+      );
       break;
     case 32: // 스페이스바를 누른 경우
       dropBlock(); // 빨리 내리기 함수 실행
@@ -520,50 +519,5 @@ restartBtn.addEventListener("click", () => {
   result.classList.remove("show");
   popUp.classList.add("show");
 });
-// 창 끄기
-// tetrisIcon2.addEventListener("click", () => {
-//   resetTetris();
-//   result.classList.remove("show");
-//   popUp.classList.add("show");
-// });
-// tetrisCloseBtn.addEventListener("click", () => {
-//   resetTetris();
-//   result.classList.remove("show");
-//   popUp.classList.add("show");
-// });
 
-//테마 바꾸기
-// const temBtn01 = document.querySelector(".tem01");
-// const temBtn02 = document.querySelector(".tem02");
-// const temBtn03 = document.querySelector(".tem03");
-
-// temBtn01.addEventListener("click", () => {
-//   const tetrisMinos = playground.querySelectorAll("li > ul > li");
-//   tetrisMinos.forEach((minos) => {
-//     minos.classList.remove("pastel");
-//     minos.classList.remove("gray");
-//     minos.classList.add("original");
-//   });
-//   celectT = "original";
-// });
-// temBtn02.addEventListener("click", () => {
-//   const tetrisMinos = playground.querySelectorAll("li > ul > li");
-//   tetrisMinos.forEach((minos) => {
-//     minos.classList.remove("pastel");
-//     minos.classList.add("gray");
-//     minos.classList.remove("original");
-//   });
-//   celectT = "gray";
-// });
-// temBtn03.addEventListener("click", () => {
-//   const tetrisMinos = playground.querySelectorAll("li > ul > li");
-//   tetrisMinos.forEach((minos) => {
-//     minos.classList.add("pastel");
-//     minos.classList.remove("gray");
-//     minos.classList.remove("original");
-//   });
-//   celectT = "pastel";
-// });
-
-// 테트리스 만들기
 init();
