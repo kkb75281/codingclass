@@ -240,6 +240,29 @@
     right: -25px;
 }
 
+.reset .close {
+    top: 80px;
+    right: 145px;
+    background-color: #e9e3e3;
+    border-radius: 0px;
+    height: 10px;
+    width: 50px;
+    box-shadow: inset -3px -3px 5px 3px rgb(162 152 152);
+}
+
+.reset .close:hover {
+    box-shadow: inset 1px 1px 5px 3px rgb(162 152 152);
+}
+
+.reset .close em {
+    position: absolute;
+    right: 5px;
+    bottom: -16px;
+    font-size: 12px;
+    rotate: 0deg;
+    color: #333;
+}
+
 /* .tetris__audio {
     display: none;
 } */

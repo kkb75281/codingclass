@@ -383,6 +383,48 @@ function dropBlock() {
   }, 10);
 }
 
+// 게임 오버
+function tetrisGameover() {
+  tetrisMusic.pause();
+  tetrisMusic.currentTime = 0;
+  duration = 500;
+  tetrisInfo.classList.remove("show");
+  tetrisRestart.classList.add("show");
+  resultLine.innerText = tetrisLine;
+  resultScore.innerText = tetrisScore;
+}
+
+// 게임 시작하기
+function StartTetris() {
+  stopTetris = false;
+  tetrisStart.classList.remove("show");
+  tetrisInfo.classList.add("show");
+  document.querySelector(".tetris__restart").classList.remove("show");
+  generateNewBlock();
+  tetrisMusic.play();
+  tetrisMusic.loop = true;
+}
+// 리셋하기
+function resetTetris() {
+  tetrisRestart.classList.remove("show");
+  tetrisInfo.classList.add("show");
+  // tetrisMusic.pause();
+  // tetrisMusic.currentTime = 0;
+  tetrisScore = 0;
+  tetrisLine = 0;
+  stopTetris = false;
+  generateNewBlock();
+  duration = 500;
+  document.querySelector(".tetris__info .tetscore span").innerText =
+    tetrisScore;
+  document.querySelector(".tetris__info .line span").innerText = tetrisLine;
+  const tetrisMinos = playground.querySelectorAll("li > ul > li");
+  tetrisMinos.forEach((minos) => {
+    // minos.className = "original";
+    minos.className = "";
+  });
+}
+
 // 이벤트
 document.addEventListener("keydown", (e) => {
   switch (e.keyCode) {

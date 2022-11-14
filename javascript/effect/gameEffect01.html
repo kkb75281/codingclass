@@ -385,7 +385,8 @@
                     </div>
                     <div class="reset">
                         <span class="start"><em>Start</em></span>
-                        <span class="restart"><em>Close</em></span>
+                        <span class="restart"><em>Restart</em></span>
+                        <span class="close"><em>Close</em></span>
                     </div>
                 </div>
                 <div class="tetris__audio">
@@ -496,7 +497,7 @@
             }
         })
 
-        document.querySelector(".tetris__button .restart").addEventListener("click", () => {
+        document.querySelector(".reset .close").addEventListener("click", () => {
             $(".i4 img").attr("src", "../assets/img/game_folder_icon12.png");
             i4.classList.remove("active");
             tetrisGame.classList.remove("show");
