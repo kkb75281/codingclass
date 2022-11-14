@@ -9,6 +9,11 @@
     background: rgb(186 178 166);
     /* backdrop-filter: blur(5px); */
     box-shadow: inset -5px -5px 5px 5px rgb(159, 150, 137);
+    display: none;
+}
+
+.tetris__wrap.show {
+    display: block;
 }
 
 .tetris__inner {
