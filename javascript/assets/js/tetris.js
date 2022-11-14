@@ -230,6 +230,8 @@ function startTetris() {
 
 // 첫 화면
 function init() {
+  popUp.classList.add("show");
+
   for (let i = 0; i < rows; i++) {
     prependNewLine(); // 블록 라인 만들기
   }
