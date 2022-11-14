@@ -2,6 +2,7 @@ const tetrisWrap = document.querySelector(".tetris__wrap");
 const playground = tetrisWrap.querySelector(".playground > ul");
 const popUp = tetrisWrap.querySelector(".tetris__play .popup");
 const startBtn = tetrisWrap.querySelector(".reset .start");
+const tetClose = tetrisWrap.querySelector(".reset .close");
 const result = tetrisWrap.querySelector(".tetris__play .result");
 const restartBtn = tetrisWrap.querySelector(".reset .tetRestart");
 const tetScore = tetrisWrap.querySelector(".tetris__play .score");
@@ -518,6 +519,12 @@ restartBtn.addEventListener("click", () => {
   resetTetris();
   result.classList.remove("show");
   popUp.classList.add("show");
+});
+document.querySelector(".i4").addEventListener("click", () => {
+  resetTetris();
+});
+tetClose.addEventListener("click", () => {
+  resetTetris();
 });
 
 init();
