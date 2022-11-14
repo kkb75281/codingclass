@@ -2,6 +2,7 @@ const tetrisWrap = document.querySelector(".tetris__wrap");
 const playground = tetrisWrap.querySelector(".playground > ul");
 const tetrisMusic = tetrisWrap.querySelector(".tetris__audio #audio");
 const popUp = tetrisWrap.querySelector(".tetris__play .popup");
+const result = tetrisWrap.querySelector(".tetris__play .result");
 const tetScore = tetrisWrap.querySelector(".tetris__play .score");
 const startBtn = tetrisWrap.querySelector(".reset .start");
 const restartBtn = tetrisWrap.querySelector(".reset .restart");
@@ -211,11 +212,12 @@ const blocks = {
 
 // 버튼 클릭
 startBtn.addEventListener("click", startTetris);
+restartBtn.addEventListener("click", resetTetris);
 
 //퀴즈 스타트
 function startTetris() {
   //팝업창 없애기
-  popUp.style.display = "none";
+  popUp.classList.remove("show");
 
   tempMovingItem = { ...movingItem };
 
@@ -388,36 +390,30 @@ function tetrisGameover() {
   tetrisMusic.pause();
   tetrisMusic.currentTime = 0;
   duration = 500;
-  tetrisInfo.classList.remove("show");
-  tetrisRestart.classList.add("show");
-  resultLine.innerText = tetrisLine;
-  resultScore.innerText = tetrisScore;
+  result.classList.add("show");
+  // resultLine.innerText = tetrisLine;
+  // resultScore.innerText = tetrisScore;
 }
 
 // 게임 시작하기
-function StartTetris() {
-  stopTetris = false;
-  tetrisStart.classList.remove("show");
-  tetrisInfo.classList.add("show");
-  document.querySelector(".tetris__restart").classList.remove("show");
-  generateNewBlock();
-  tetrisMusic.play();
-  tetrisMusic.loop = true;
-}
+// function StartTetris() {
+//   stopTetris = false;
+//   popUp.classList.add("show");
+//   generateNewBlock();
+//   tetrisMusic.play();
+//   tetrisMusic.loop = true;
+// }
+
 // 리셋하기
 function resetTetris() {
-  tetrisRestart.classList.remove("show");
-  tetrisInfo.classList.add("show");
-  // tetrisMusic.pause();
-  // tetrisMusic.currentTime = 0;
+  popUp.classList.add("show");
   tetrisScore = 0;
   tetrisLine = 0;
   stopTetris = false;
   generateNewBlock();
   duration = 500;
-  document.querySelector(".tetris__info .tetscore span").innerText =
-    tetrisScore;
-  document.querySelector(".tetris__info .line span").innerText = tetrisLine;
+  tetScore.innerText = tetscore;
+  // document.querySelector(".tetris__info .line span").innerText = tetrisLine;
   const tetrisMinos = playground.querySelectorAll("li > ul > li");
   tetrisMinos.forEach((minos) => {
     // minos.className = "original";

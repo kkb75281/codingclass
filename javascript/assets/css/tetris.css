@@ -44,7 +44,8 @@
     background: #909a6c;
 }
 
-.popup {
+.popup,
+.result {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -54,6 +55,12 @@
     border: 2px solid #525c2d;
     padding: 10px;
     text-align: center;
+    display: none;
+}
+
+.popup.show,
+.result.show {
+    display: block;
 }
 
 .score {
