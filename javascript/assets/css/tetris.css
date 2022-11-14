@@ -238,12 +238,12 @@
 
 .reset .start {}
 
-.reset .restart {
+.reset .tetRestart {
     top: 45px;
     right: 65px;
 }
 
-.reset .restart em {
+.reset .tetRestart em {
     right: -25px;
 }
 

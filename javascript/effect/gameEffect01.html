@@ -388,14 +388,14 @@
                     </div>
                     <div class="reset">
                         <span class="start"><em>Start</em></span>
-                        <span class="restart"><em>Restart</em></span>
+                        <span class="tetRestart"><em>Restart</em></span>
                         <span class="close"><em>Close</em></span>
                     </div>
                 </div>
-                <div class="tetris__audio">
+                <!-- <div class="tetris__audio">
                     <audio id="audio" src="../assets/audio/tetris.mp3" loop="loop"></audio>
                     <audio id="endAudio" src="../assets/audio/tetris.mp3" loop="loop"></audio>
-                </div>
+                </div> -->
             </div>
         </div>
         <!-- //tetris_game -->
@@ -623,8 +623,8 @@
             el.addEventListener("mousedown", function () {
                 let maxNum = Math.max(...zIndexArray);
                 let maxIndex = zIndexArray.findIndex((arr) => arr === maxNum);
-                console.log(index);
-                console.log(maxNum, maxIndex);
+                // console.log(index);
+                // console.log(maxNum, maxIndex);
                 zIndexArray = zIndexArray.map((arr) => {
                     if (arr > zIndexArray[index]) {
                         return arr - 1;
