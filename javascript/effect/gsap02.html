@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img-wrap {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin: 0 auto;
+            width: 1200px;
+            margin-top: 1000px;
+        }
+
+        .img {
+            height: 600px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .img:nth-child(1) {
+            background-image: url(https://images.unsplash.com/photo-1668302766145-bc8bc49870ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
+        }
+
+        .img:nth-child(2) {
+            background-image: url(https://images.unsplash.com/photo-1505628346881-b72b27e84530?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
+        }
+
+        .img:nth-child(3) {
+            background-image: url(https://images.unsplash.com/photo-1517423568366-8b83523034fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80);
+        }
+
+        .img:nth-child(4) {
+            background-image: url(https://images.unsplash.com/photo-1498890686450-1dd199ce6640?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
+        }
+
+        .img:nth-child(5) {
+            background-image: url(https://images.unsplash.com/photo-1668439649621-aeb686b4b493?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80);
+        }
+
+        .img:nth-child(6) {
+            background-image: url(https://images.unsplash.com/photo-1668437621444-b7d11df8cd87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
+        }
+
+        .img:nth-child(7) {
+            background-image: url(https://images.unsplash.com/photo-1668435548494-e715c74c4ceb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
+        }
+
+        .img:nth-child(8) {
+            background-image: url(https://images.unsplash.com/photo-1668508485538-662819fc9453?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80);
+        }
+
+        .img:nth-child(9) {
+            background-image: url(https://images.unsplash.com/photo-1668345585651-fd4226f426bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
+        }
+
+        .img:nth-child(10) {
+            background-image: url(https://images.unsplash.com/photo-1661347335435-6d851eb110f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
+        }
+
+        .img:nth-child(11) {
+            background-image: url(https://images.unsplash.com/photo-1668403778778-7319158b51ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80);
+        }
+
+        .img:nth-child(12) {
+            background-image: url(https://images.unsplash.com/photo-1668403783788-887b8cf47abc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80);
+        }
+
+        .img:nth-child(13) {
+            background-image: url(https://images.unsplash.com/photo-1668355665709-817bc2cd51e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
+        }
+
+        .img:nth-child(14) {
+            background-image: url(https://images.unsplash.com/photo-1668383184143-3896b060259a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80);
+        }
+
+        .img:nth-child(15) {
+            background-image: url(https://images.unsplash.com/photo-1668259678563-95f9a18e2323?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="img-wrap">
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@latest/bundled/lenis.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+        })
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+        requestAnimationFrame(raf)
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".img-wrap .img",
+                scrub: true,
+            }
+        })
+            .to(".img", {
+                y: -1000,
+                scrub: true,
+                stagger: .2,
+                easing: "power1.out"
+            })
+    </script>
+</body>
+
+</html>
