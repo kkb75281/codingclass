@@ -57,6 +57,10 @@ body {
     color: #fff;
 }
 
+.game__box>div.zIndex {
+    z-index: 999 !important;
+}
+
 .icon_box {
     text-align: center;
 }
@@ -105,12 +109,12 @@ body {
     top: 400px;
 }
 
-.i5 {
+/* .i5 {
     top: 500px;
-}
+} */
 
 .i6 {
-    top: 600px;
+    top: 500px;
 }
 
 .i6 img {

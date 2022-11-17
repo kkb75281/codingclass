@@ -32,6 +32,7 @@
   text-align: center;
   overflow: scroll;
   color: #fff;
+  border-radius: 30px;
 }
 
 .search__audio span svg {

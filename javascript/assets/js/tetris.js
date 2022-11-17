@@ -355,7 +355,7 @@ function checkMatch() {
       prependNewLine(); // 줄 생성
       tetrisScore++;
       tetScore.innerText = tetrisScore;
-      duration > 200 ? (duration = duration - 20) : duration;
+      duration > 200 ? (duration = duration - 30) : duration;
     }
   });
 
@@ -448,6 +448,7 @@ function resetTetris() {
   tetrisMusic.currentTime = 0;
   clearInterval(setTetrisTime);
   tetrisScore = 0;
+  tetScore.innerText = tetrisScore;
   tetrisTime = 0;
   stopTetris = true;
   duration = 500;
@@ -520,9 +521,7 @@ restartBtn.addEventListener("click", () => {
   result.classList.remove("show");
   popUp.classList.add("show");
 });
-document.querySelector(".i4").addEventListener("click", () => {
-  resetTetris();
-});
+document.querySelector(".i4").addEventListener("click", resetTetris);
 tetClose.addEventListener("click", () => {
   resetTetris();
 });

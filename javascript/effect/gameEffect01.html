@@ -48,10 +48,10 @@
                 <img src="../assets/img/game_folder_icon12.png" alt="4">
                 <span>tetris</span>
             </div>
-            <div class="icon i5">
+            <!-- <div class="icon i5">
                 <img src="../assets/img/game_folder_icon12.png" alt="5">
                 <span>ddd</span>
-            </div>
+            </div> -->
             <div class="icon i6"><a
                     href="https://github.com/kkb75281/codingclass/blob/main/javascript/effect/gameEffect01.html">
                     <img src="../assets/img/game_folder_icon16.png" alt="코드보기"></a>
@@ -420,7 +420,7 @@
         $(".tetris__wrap").draggable();
         // $(".tetris__wrap").draggable();
 
-        const icon = document.querySelector(".icon");
+        const icon = document.querySelectorAll(".icon_box .icon");
         const i1 = document.querySelector(".i1");
         const i2 = document.querySelector(".i2");
         const i3 = document.querySelector(".i3");
@@ -445,6 +445,16 @@
                 i1.classList.remove("active");
                 musicBox.classList.remove("show");
             } else {
+                $(".i2 img").attr("src", "../assets/img/game_folder_icon12.png");
+                $(".i3 img").attr("src", "../assets/img/game_folder_icon12.png");
+                $(".i4 img").attr("src", "../assets/img/game_folder_icon12.png");
+                i2.classList.remove("active");
+                searchGame.classList.remove("show");
+                i3.classList.remove("active");
+                memoryGame.classList.remove("show");
+                i4.classList.remove("active");
+                tetrisGame.classList.remove("show");
+
                 $(".i1 img").attr("src", "../assets/img/game_folder_over11.png");
                 i1.classList.add("active");
                 musicBox.classList.add("show");
@@ -457,6 +467,16 @@
                 i2.classList.remove("active");
                 searchGame.classList.remove("show");
             } else {
+                $(".i1 img").attr("src", "../assets/img/game_folder_icon12.png");
+                $(".i3 img").attr("src", "../assets/img/game_folder_icon12.png");
+                $(".i4 img").attr("src", "../assets/img/game_folder_icon12.png");
+                i1.classList.remove("active");
+                musicBox.classList.remove("show");
+                i3.classList.remove("active");
+                memoryGame.classList.remove("show");
+                i4.classList.remove("active");
+                tetrisGame.classList.remove("show");
+
                 $(".i2 img").attr("src", "../assets/img/game_folder_over12.png");
                 i2.classList.add("active");
                 searchGame.classList.add("show");
@@ -475,6 +495,16 @@
                 i3.classList.remove("active");
                 memoryGame.classList.remove("show");
             } else {
+                $(".i1 img").attr("src", "../assets/img/game_folder_icon12.png");
+                $(".i2 img").attr("src", "../assets/img/game_folder_icon12.png");
+                $(".i4 img").attr("src", "../assets/img/game_folder_icon12.png");
+                i1.classList.remove("active");
+                musicBox.classList.remove("show");
+                i2.classList.remove("active");
+                searchGame.classList.remove("show");
+                i4.classList.remove("active");
+                tetrisGame.classList.remove("show");
+
                 $(".i3 img").attr("src", "../assets/img/game_folder_over12.png");
                 i3.classList.add("active");
                 memoryGame.classList.add("show");
@@ -493,6 +523,16 @@
                 i4.classList.remove("active");
                 tetrisGame.classList.remove("show");
             } else {
+                $(".i1 img").attr("src", "../assets/img/game_folder_icon12.png");
+                $(".i2 img").attr("src", "../assets/img/game_folder_icon12.png");
+                $(".i3 img").attr("src", "../assets/img/game_folder_icon12.png");
+                i1.classList.remove("active");
+                musicBox.classList.remove("show");
+                i2.classList.remove("active");
+                searchGame.classList.remove("show");
+                i3.classList.remove("active");
+                memoryGame.classList.remove("show");
+
                 $(".i4 img").attr("src", "../assets/img/game_folder_over12.png");
                 i4.classList.add("active");
                 tetrisGame.classList.add("show");
@@ -505,17 +545,17 @@
             tetrisGame.classList.remove("show");
         })
 
-        i5.addEventListener("click", () => {
-            if (i5.classList.contains("active")) {
-                $(".i5 img").attr("src", "../assets/img/game_folder_icon12.png");
-                i5.classList.remove("active");
-                i5.classList.remove("show");
-            } else {
-                $(".i5 img").attr("src", "../assets/img/game_folder_over12.png");
-                i5.classList.add("active");
-                i5.classList.add("show");
-            }
-        })
+        // i5.addEventListener("click", () => {
+        //     if (i5.classList.contains("active")) {
+        //         $(".i5 img").attr("src", "../assets/img/game_folder_icon12.png");
+        //         i5.classList.remove("active");
+        //         i5.classList.remove("show");
+        //     } else {
+        //         $(".i5 img").attr("src", "../assets/img/game_folder_over12.png");
+        //         i5.classList.add("active");
+        //         i5.classList.add("show");
+        //     }
+        // })
 
         // i6.addEventListener("click", () => {
         //     // $(".i6 img").attr("src", "../assets/img/game_folder_over16.png");
@@ -614,33 +654,33 @@
         }
 
         //z-index 변화
-        const BoxList = document.querySelectorAll(".game__box > div");
-        BoxList.forEach((el, index) => {
-            // console.log(el);
-            // console.log(index);
-            el.style.zIndex = index;
-            el.addEventListener("mousedown", function () {
-                let maxNum = Math.max(...zIndexArray);
-                let maxIndex = zIndexArray.findIndex((arr) => arr === maxNum);
-                // console.log(index);
-                // console.log(maxNum, maxIndex);
-                zIndexArray = zIndexArray.map((arr) => {
-                    if (arr > zIndexArray[index]) {
-                        return arr - 1;
-                    } else {
-                        return arr;
-                    }
-                });
-                zIndexArray[index] = maxNum;
-                array.forEach((el, index) => {
-                    el.style.zIndex = zIndexArray[index];
-                });
-            });
-        });
-        let array = [...BoxList];
-        let zIndexArray = array.map((arr) => Number(arr.style.zIndex));
+        // const BoxList = document.querySelectorAll(".game__box > div");
+        // BoxList.forEach((el, index) => {
+        //     // console.log(el);
+        //     // console.log(index);
+        //     el.style.zIndex = index;
+        //     el.addEventListener("mousedown", function () {
+        //         let maxNum = Math.max(...zIndexArray);
+        //         let maxIndex = zIndexArray.findIndex((arr) => arr === maxNum);
+        //         // console.log(index);
+        //         // console.log(maxNum, maxIndex);
+        //         zIndexArray = zIndexArray.map((arr) => {
+        //             if (arr > zIndexArray[index]) {
+        //                 return arr - 1;
+        //             } else {
+        //                 return arr;
+        //             }
+        //         });
+        //         zIndexArray[index] = maxNum;
+        //         array.forEach((el, index) => {
+        //             el.style.zIndex = zIndexArray[index];
+        //         });
+        //     });
+        // });
+        // let array = [...BoxList];
+        // let zIndexArray = array.map((arr) => Number(arr.style.zIndex));
 
-        // z-index
+        // // z - index
         // icon.forEach((el, i) => {
         //     el.addEventListener("click", () => {
         //         BoxList.forEach((e) => {
