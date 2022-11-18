@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수형</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #000;
+        }
+
+        #canvas {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script src="three.min.js"></script>
+    <script>
+        console.log(THREE)
+
+        // 화면 설정
+        const scene = new THREE.Scene();
+
+        // 랜더러 설정
+        const renderer = new THREE.WebGLRenderer({ antialias: true });  // 계단 현상 막아줘서 해상도 조금 더 좋아짐
+        renderer.setSize(window.innerWidth, window.innerHeight);        // 화면 크기 설정
+        renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);    // 해상도 설정
+        // console.log(devicePixelRatio)    // 해상도
+        document.body.appendChild(renderer.domElement);                 // 화면 렌더링 (설정값 뿌려주기)
+
+        // 카메라 설정
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000)     // 가까운거리, 먼거리
+        camera.position.set(0, 0, 7);
+
+        // 메쉬 설정(geometry + material 둘 다 설정해줘야 함)
+        const geometry = new THREE.TorusGeometry(2, .5, 16, 100);
+        const material = new THREE.MeshLambertMaterial({ color: 0xff0000 });
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        // 조명 설정
+        const light = new THREE.DirectionalLight(0xffffff, 1.5);
+        light.position.y = 100;
+        scene.add(light);
+
+        const light2 = new THREE.DirectionalLight(0xffffff, .5)
+        light.position.set(-10, -3, 10);
+        scene.add(light2);
+
+        // 업데이트 설정
+        function update() {
+            requestAnimationFrame(update);
+
+            mesh.rotation.x += .02;
+            mesh.rotation.y += .02;
+            mesh.rotation.z += .02;
+
+            renderer.render(scene, camera)
+        }
+        update();
+
+        // 화면 사이즈 설정
+        function resize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        window.addEventListener("resize", resize)
+
+    </script>
+</body>
+
+</html>

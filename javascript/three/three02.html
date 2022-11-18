@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클래스형</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #000;
+        }
+
+        #canvas {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <canvas id="webgl"></canvas>
+    <script src="three.min.js"></script>
+    <script>
+
+        // 변수 선언
+        class Stage {
+            constructor() {
+                this.renderParam = {
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                }
+                this.cameraParam = {
+                    fov: 75,
+                    near: 1,
+                    far: 1000
+                }
+                this.scene = null;
+                this.renderer = null;
+                this.camera = null;
+                this.mesh = null;
+                // this.mesh2 = null;
+                this.init();
+            }
+
+            // 기본 셋팅값
+            init() {
+                this._setScene();            // 화면 설정
+                this._setRender();           // 렌더러 설정
+                this._setCamera();           // 카메라 설정
+                // this._setMesh();             // 메쉬 설정
+                // this._setMesh2();             // 메쉬 설정
+                // this._setMesh3();             // 메쉬 설정
+                this._setMesh4();             // 메쉬 설정
+                this._setLight();            // 조명 설정
+
+                this._update();              // 업데이트 설정
+                this._render();              // 업데이트 설정
+
+                onresize = this._resize.bind(this);     // 리사이즈 설정
+            }
+
+            _setScene() {
+                this.scene = new THREE.Scene();
+            }
+
+            _setRender() {
+                this.renderer = new THREE.WebGLRenderer({
+                    canvas: document.getElementById("webgl"),
+                    antialias: true,
+                    alpha: true                                 // 배경 투명
+                });
+                this.renderer.setSize(this.renderParam.width, this.renderParam.width.height);
+                this.renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);
+            }
+
+            _setCamera() {
+                this.camera = new THREE.PerspectiveCamera(
+                    this.cameraParam.fov,
+                    this.renderParam.Width / this.renderParam.Height,
+                    this.cameraParam.near,
+                    this.cameraParam.far
+                )
+                this.camera.position.set(0, 0, 30);
+            }
+
+            _setMesh() {
+                const geometry = new THREE.TorusGeometry(2, .5, 16, 100);
+                const material = new THREE.MeshLambertMaterial({ color: 0xff0000 });
+                this.mesh = new THREE.Mesh(geometry, material);
+                this.scene.add(this.mesh);
+            }
+
+            _setMesh2() {
+                const geometry = new THREE.BoxGeometry(3, 3, 3, 4, 4, 4);
+                const material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
+                this.mesh = new THREE.Mesh(geometry, material);
+                this.mesh.position.set(-3, 0, 0);
+                this.scene.add(this.mesh);
+            }
+
+            _setMesh3() {
+                const geometry = new THREE.BoxGeometry(3, 3, 3, 4, 4, 4);
+                const material = new THREE.MeshStandardMaterial({
+                    color: 0xff0000,
+                    wireframe: true
+                });
+                this.mesh2 = new THREE.Mesh(geometry, material);
+                this.mesh2.position.set(4, 0, 0);
+                this.scene.add(this.mesh2);
+            }
+
+            _setMesh4() {
+                const x = 0, y = 0;
+
+                const heartShape = new THREE.Shape();
+
+                heartShape.moveTo(x + 5, y + 5);
+                heartShape.bezierCurveTo(x + 5, y + 5, x + 4, y, x, y);
+                heartShape.bezierCurveTo(x - 6, y, x - 6, y + 7, x - 6, y + 7);
+                heartShape.bezierCurveTo(x - 6, y + 11, x - 3, y + 15.4, x + 5, y + 19);
+                heartShape.bezierCurveTo(x + 12, y + 15.4, x + 16, y + 11, x + 16, y + 7);
+                heartShape.bezierCurveTo(x + 16, y + 7, x + 16, y, x + 10, y);
+                heartShape.bezierCurveTo(x + 7, y, x + 5, y + 5, x + 5, y + 5);
+
+                const geometry = new THREE.ShapeGeometry(heartShape);
+                const material = new THREE.MeshStandardMaterial({
+                    color: 0xff0000,
+                    wireframe: true
+                });
+                this.mesh = new THREE.Mesh(geometry, material);
+                this.scene.add(this.mesh);
+            }
+
+            _setLight() {
+                const light = new THREE.DirectionalLight(0xffffff, 1.5);
+                light.position.y = 100;
+                this.scene.add(light);
+
+                const light2 = new THREE.DirectionalLight(0xffffff, .5)
+                light.position.set(-10, -3, 10);
+                this.scene.add(light2);
+
+                const ambientLight = new THREE.AmbientLight(0x663399);
+                this.scene.add(ambientLight);
+            }
+
+            _update() {
+                // this.mesh.rotation.x += .01;
+                this.mesh.rotation.y += .01;
+                this.mesh.rotation.z += .01;
+
+                // this.mesh2.rotation.x += .005;
+                // this.mesh2.rotation.y += .005;
+                // this.mesh2.rotation.z += .005;
+            }
+
+            _render() {
+                this._update();     // 애니메이션
+                this.renderer.render(this.scene, this.camera);
+                requestAnimationFrame(this._render.bind(this))     // 자기자신을 인식할 수 있도록 bind 처리
+            }
+
+            _resize() {
+                this.camera.aspect = window.innerWidth / window.innerHeight;
+                this.camera.updateProjectionMatrix();
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                // this.renderer.render(this.scene, this.camera);
+            }
+        }
+
+        // 즉시 실행 함수(화살표 함수)
+        (() => {
+            const stage = new Stage();  // 변수에 저장해서 실행해도 되고 그냥 실행해도 되고
+
+        })();
+
+    </script>
+</body>
+
+</html>
